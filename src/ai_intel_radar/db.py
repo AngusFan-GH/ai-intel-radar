@@ -220,6 +220,28 @@ def fetch_recent_events(limit: int = 100, db_path: Path | None = None) -> list[s
         ).fetchall()
 
 
+def fetch_events_by_type(event_type: str, limit: int = 20, db_path: Path | None = None) -> list[sqlite3.Row]:
+    with get_connection(db_path) as connection:
+        return connection.execute(
+            """
+            SELECT *
+            FROM events
+            WHERE event_type = ?
+            ORDER BY COALESCE(score, 0) DESC, COALESCE(published_at, discovered_at) DESC
+            LIMIT ?
+            """,
+            (event_type, limit),
+        ).fetchall()
+
+
+def fetch_event_counts(db_path: Path | None = None) -> dict[str, int]:
+    with get_connection(db_path) as connection:
+        rows = connection.execute(
+            "SELECT event_type, COUNT(*) AS count FROM events GROUP BY event_type"
+        ).fetchall()
+    return {row["event_type"]: row["count"] for row in rows}
+
+
 def update_scores(scored_events: list[tuple[str, float]], db_path: Path | None = None) -> None:
     with get_connection(db_path) as connection:
         connection.executemany(
