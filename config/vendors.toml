@@ -81,31 +81,46 @@ entity_type = "big_tech"
 priority = "P0"
 
 [[vendor.source]]
-type = "rss"
-url = "https://www.alibabacloud.com/blog/feed"
-event_type = "product_launch"
+type = "github_search"
+query = "org:QwenLM"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "Qwen"
+event_type = "model_launch"
 
 [[vendor]]
-name = "Baidu"
+name = "DeepSeek"
 region = "china"
-entity_type = "big_tech"
+entity_type = "startup"
 priority = "P0"
 
 [[vendor.source]]
-type = "rss"
-url = "https://news.baidu.com/feed"
-event_type = "product_launch"
+type = "github_search"
+query = "org:deepseek-ai"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "deepseek-ai"
+event_type = "model_launch"
 
 [[vendor]]
-name = "Tencent Cloud"
+name = "Tencent Hunyuan"
 region = "china"
 entity_type = "big_tech"
 priority = "P1"
 
 [[vendor.source]]
-type = "rss"
-url = "https://www.tencentcloud.com/feed"
-event_type = "product_launch"
+type = "github_search"
+query = "org:Tencent-Hunyuan"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "Tencent-Hunyuan"
+event_type = "model_launch"
 
 [[vendor]]
 name = "Zhipu AI"
@@ -114,8 +129,13 @@ entity_type = "startup"
 priority = "P1"
 
 [[vendor.source]]
-type = "rss"
-url = "https://zhipu.ai/news/rss.xml"
+type = "github_search"
+query = "org:ZhipuAI"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "zai-org"
 event_type = "model_launch"
 
 [[vendor]]
@@ -125,9 +145,110 @@ entity_type = "startup"
 priority = "P1"
 
 [[vendor.source]]
-type = "rss"
-url = "https://www.moonshot.cn/news/rss.xml"
-event_type = "product_launch"
+type = "github_search"
+query = "org:moonshotai"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "moonshotai"
+event_type = "model_launch"
+
+[[vendor]]
+name = "MiniMax"
+region = "china"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:MiniMax-AI"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "MiniMaxAI"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Baichuan"
+region = "china"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:baichuan-inc"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "baichuan-inc"
+event_type = "model_launch"
+
+[[vendor]]
+name = "StepFun"
+region = "china"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:stepfun-ai"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "stepfun-ai"
+event_type = "model_launch"
+
+[[vendor]]
+name = "ByteDance Seed"
+region = "china"
+entity_type = "big_tech"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:bytedance-seed"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "bytedance-research"
+event_type = "model_launch"
+
+[[vendor]]
+name = "InternLM"
+region = "china"
+entity_type = "research_org"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:InternLM"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "internlm"
+event_type = "model_launch"
+
+[[vendor]]
+name = "ModelScope"
+region = "china"
+entity_type = "open_source_org"
+priority = "P1"
+
+[[vendor.source]]
+type = "github_search"
+query = "org:modelscope"
+event_type = "open_source_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "iic"
+event_type = "model_launch"
 
 [[discovery_source]]
 type = "github_search"
@@ -139,6 +260,12 @@ event_type = "open_source_launch"
 type = "github_search"
 name = "github-llm-recent"
 query = "llm OR agent created:>2026-08-10 stars:>15"
+event_type = "open_source_launch"
+
+[[discovery_source]]
+type = "github_search"
+name = "github-china-ai-orgs"
+query = "Qwen OR DeepSeek OR Hunyuan OR InternLM OR MiniMax OR Moonshot OR Zhipu OR Baichuan pushed:>2026-08-10 stars:>10"
 event_type = "open_source_launch"
 
 [[discovery_source]]

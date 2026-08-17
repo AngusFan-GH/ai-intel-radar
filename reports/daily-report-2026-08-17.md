@@ -1,35 +1,49 @@
-# AI Intel Radar Daily Report (2026-08-17)
+# AI 情报雷达日报（2026-08-17）
 
-## 厂商新品
+共整理 60 条事件，按“厂商新品 / 新模型 / 新开源项目 / 其他观察”分类展示。
 
-- [Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed](https://openai.com/index/previewing-ultrafast) | vendor=OpenAI | score=55.22 | tags=infra | Preview Ultrafast, a new OpenAI API service tier that runs GPT-5.6 Sol up to 14× faster. Powered by Cerebras, it delivers up to 750 output tokens per second.
-- [OpenAI appoints Dali Rajic as Chief Revenue Officer](https://openai.com/index/dali-rajic-chief-revenue-officer) | vendor=OpenAI | score=55.06 | tags= | OpenAI appoints Dali Rajic as Chief Revenue Officer to lead its global revenue organization and help businesses realize the full value of AI.
-- [From assistance to execution: How enterprises put AI to work](https://openai.com/index/how-enterprises-put-ai-to-work) | vendor=OpenAI | score=51.00 | tags=agent, coding | OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.
-- [How RingCentral builds AI-native work from engineering to ops](https://openai.com/index/ringcentral) | vendor=OpenAI | score=51.00 | tags=coding | See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelligence across engineering and operations.
-- [Testing ads in ChatGPT](https://openai.com/index/testing-ads-in-chatgpt) | vendor=OpenAI | score=51.00 | tags= | OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control.
-- [What building an AI-native finance function taught me](https://openai.com/index/building-an-ai-native-finance-function) | vendor=OpenAI | score=51.00 | tags= | OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to stronger controls and AI ROI.
-- [OpenAI’s letter to Governor Abbott on responsible AI infrastructure in Texas](https://openai.com/index/responsible-ai-infrastructure-texas) | vendor=OpenAI | score=51.00 | tags=infra | OpenAI sent Governor Greg Abbott a letter outlining its commitment to responsible AI infrastructure in Texas. The letter supports reliable, transparent growth that benefits Texans.
+## 新开源项目（60）
 
-## 新模型
-
-- [The builder’s guide to GPT‑5.6](https://openai.com/index/builders-guide-to-gpt-5-6) | vendor=OpenAI | score=57.39 | tags=agent, infra | Learn how startups use GPT-5.6 to build faster, more cost-efficient AI agents with smarter model selection and new Responses API capabilities.
-- [Daybreak models are now available on AWS](https://openai.com/index/daybreak-models-are-now-available-on-aws) | vendor=OpenAI | score=53.00 | tags= | OpenAI and AWS are making Daybreak cybersecurity capabilities available through Amazon Bedrock to support enterprise security workflows.
-- [Model ML completes finance work more efficiently with GPT-5.6 Sol](https://openai.com/index/model-ml) | vendor=OpenAI | score=53.00 | tags= | Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks and Excel workbooks.
-
-## 新开源项目
-
-- [0xsline/awesome-deepseek-harness is trending](https://github.com/0xsline/awesome-deepseek-harness) | vendor=0xsline | score=76.00 | tags=infra | DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic.
-- [ysr666/dsh-vision-router is trending](https://github.com/ysr666/dsh-vision-router) | vendor=ysr666 | score=75.99 | tags=agent, image | Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screen
-- [Anionex/dsh-vision-toolkit is trending](https://github.com/Anionex/dsh-vision-toolkit) | vendor=Anionex | score=75.95 | tags=agent, image | 让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&A, long-screenshot OCR, UI restoration, grounding, p
-- [openai/openai-python: v3.1.0](https://github.com/openai/openai-python/releases/tag/v3.1.0) | vendor=OpenAI | score=71.53 | tags=video, infra | ## [3.1.0](https://github.com/openai/openai-python/compare/v3.0.0...v3.1.0) (2026-08-14)   ### Features  * **api:** add WebSocket stream IDs ([#3612](https://github.com/openai/open
-- [Dominic789654/awesome-deepseek-harness is trending](https://github.com/Dominic789654/awesome-deepseek-harness) | vendor=Dominic789654 | score=61.34 | tags=agent, coding | A curated list of plugins, skills, MCP servers, patch/profile layers, orchestrators & UIs for DeepSeek Harness (DSH). Visualization · PPT · Coding · Agents · Loops (auto-research) 
-- [bradeGithub/DSH-Plugins-Marketplace is trending](https://github.com/bradeGithub/DSH-Plugins-Marketplace) | vendor=bradeGithub | score=61.27 | tags= | DSH插件市场 / DSH Plugin Marketplace: 在 DeepSeek Harness Web GUI 中一键浏览、安装与更新 GitHub topic:dsh-plugin 的全部插件 | browse, install & update all GitHub dsh-plugin plugins in the DSH Web GUI
-- [openai/openai-python: v3.0.0](https://github.com/openai/openai-python/releases/tag/v3.0.0) | vendor=OpenAI | score=61.00 | tags=infra | ## [3.0.0](https://github.com/openai/openai-python/compare/v2.54.0...v3.0.0) (2026-08-12)   ### ⚠ BREAKING CHANGES  * **api:** HTTPX2 is now the default HTTP client, and `httpx` is
-- [openai/openai-python: v2.54.0](https://github.com/openai/openai-python/releases/tag/v2.54.0) | vendor=OpenAI | score=61.00 | tags=voice, infra | ## [2.54.0](https://github.com/openai/openai-python/compare/v2.53.0...v2.54.0) (2026-08-11)   ### Features  * **api:** Add new Responses model identifiers ([#3595](https://github.c
-- [openai/openai-python: v2.53.0](https://github.com/openai/openai-python/releases/tag/v2.53.0) | vendor=OpenAI | score=61.00 | tags=infra | ## [2.53.0](https://github.com/openai/openai-python/compare/v2.52.1...v2.53.0) (2026-08-03)   ### Features  * **api:** Add gpt-5.5 and tool name/namespace to Responses types ([#356
-- [openai/openai-python: v2.52.1](https://github.com/openai/openai-python/releases/tag/v2.52.1) | vendor=OpenAI | score=61.00 | tags= | ## 2.52.1 (2026-07-31)  Full Changelog: [v2.52.0...v2.52.1](https://github.com/openai/openai-python/compare/v2.52.0...v2.52.1)  ### Chores  * **ci:** pin setup-uv v5 to its underly
-- [trefeon/freebuff-proxy is trending](https://github.com/trefeon/freebuff-proxy) | vendor=trefeon | score=60.70 | tags=coding | OpenAI-compatible gateway for FreeBuff coding models. Token pool, session lifecycle, TLS stealth, embedded admin dashboard. No ads, no CLI, just /v1/chat/completions.
-- [thiientv/godmode is trending](https://github.com/thiientv/godmode) | vendor=thiientv | score=60.39 | tags=agent, coding | Production-grade Agent Skills for AI coding agents—composable workflows for planning, TDD, debugging, review, UI/UX, releases, incidents, and evals.
-- [Nwflower/dsh-chat-import is trending](https://github.com/Nwflower/dsh-chat-import) | vendor=Nwflower | score=58.67 | tags=agent, coding | Import 14+ external agent chat histories (Claude Code, Codex, ChatGPT, Cursor, Gemini, Reasonix, opencode, ZCode, Grok Build, OpenClaw, Pi, Hermes, Kimi CLI, DSH) into DeepSeek Har
-- [Greninja9257/LabLLM is trending](https://github.com/Greninja9257/LabLLM) | vendor=Greninja9257 | score=57.83 | tags= | A native macOS lab for teaching tiny language models to think — build the architecture, train the weights, and watch a small LLM emerge from scratch, locally on Apple Silicon with 
-- [omdsh-dev/dsh-data-agent is trending](https://github.com/omdsh-dev/dsh-data-agent) | vendor=omdsh-dev | score=57.74 | tags=agent | Connect DSH to your database for conversational data analysis and actionable business insights.
+- [deepseek-ai/deepseek-harness is trending](https://github.com/deepseek-ai/deepseek-harness)
+  - 中文说明：主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：未打标签。
+  - 原文摘要：DeepSeek Harness: Everything is a Plugin.
+- [MiniMax-AI/MiniMax-H3 is trending](https://github.com/MiniMax-AI/MiniMax-H3)
+  - 中文说明：主体：MiniMax-AI；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：未打标签。
+- [QwenLM/Qwen-MM-Plugins is trending](https://github.com/QwenLM/Qwen-MM-Plugins)
+  - 中文说明：主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：Agent、多模态。
+  - 原文摘要：Make any agent harness multimodal-native.
+- [0xsline/awesome-deepseek-harness is trending](https://github.com/0xsline/awesome-deepseek-harness)
+  - 中文说明：主体：0xsline；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：基础设施。
+  - 原文摘要：DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic.
+- [elie222/rakazo is trending](https://github.com/elie222/rakazo)
+  - 中文说明：主体：elie222；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。
+  - 原文摘要：Open-source Grok Bot alternative. Choose your own model and sandbox.
+- [modelscope/FunASR is trending](https://github.com/modelscope/FunASR)
+  - 中文说明：主体：modelscope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：语音、基础设施。
+  - 原文摘要：Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, and OpenAI-compatible/MCP serving.
+- [QwenLM/Qwen3.8 is trending](https://github.com/QwenLM/Qwen3.8)
+  - 中文说明：主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。
+  - 原文摘要：Qwen3.8 is the large language model series developed by Qwen team, Alibaba Group.
+- [ysr666/dsh-vision-router is trending](https://github.com/ysr666/dsh-vision-router)
+  - 中文说明：主体：ysr666；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：Agent、图像。
+  - 原文摘要：Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screen
+- [deepseek-ai/awesome-deepseek-agent is trending](https://github.com/deepseek-ai/awesome-deepseek-agent)
+  - 中文说明：主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.98；标签：Agent。
+- [ByteDance-Seed/EdgeBench is trending](https://github.com/ByteDance-Seed/EdgeBench)
+  - 中文说明：主体：ByteDance-Seed；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：未打标签。
+  - 原文摘要：EdgeBench: Unveiling scaling laws of learning from real-world environments
+- [deepseek-ai/awesome-deepseek-integration is trending](https://github.com/deepseek-ai/awesome-deepseek-integration)
+  - 中文说明：主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：基础设施。
+  - 原文摘要：Integrate the DeepSeek API into popular software
+- [QwenLM/qwen-code is trending](https://github.com/QwenLM/qwen-code)
+  - 中文说明：主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：Agent、编程。
+  - 原文摘要：An open-source AI coding agent that lives in your terminal.
+- [InternLM/WildClawBench is trending](https://github.com/InternLM/WildClawBench)
+  - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：Agent。
+  - 原文摘要：An in-the-wild benchmark for AI agents in the OpenClaw Environment.
+- [MoonshotAI/Kimi-K3 is trending](https://github.com/MoonshotAI/Kimi-K3)
+  - 中文说明：主体：MoonshotAI；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.95；标签：未打标签。
+  - 原文摘要：Open Frontier Intelligence
+- [modelscope/evalscope is trending](https://github.com/modelscope/evalscope)
+  - 中文说明：主体：modelscope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.95；标签：未打标签。
+  - 原文摘要：A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.
