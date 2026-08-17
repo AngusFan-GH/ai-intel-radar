@@ -1,0 +1,148 @@
+[[vendor]]
+name = "OpenAI"
+region = "global"
+entity_type = "big_tech"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://openai.com/news/rss.xml"
+event_type = "product_launch"
+
+[[vendor.source]]
+type = "github_releases"
+repo = "openai/openai-python"
+event_type = "open_source_launch"
+
+[[vendor]]
+name = "Anthropic"
+region = "global"
+entity_type = "startup"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.anthropic.com/news/rss.xml"
+event_type = "product_launch"
+
+[[vendor]]
+name = "Google DeepMind"
+region = "global"
+entity_type = "big_tech"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://deepmind.google/discover/blog/rss.xml"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Meta AI"
+region = "global"
+entity_type = "big_tech"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://ai.meta.com/blog/rss/"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Mistral AI"
+region = "global"
+entity_type = "startup"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://mistral.ai/news/rss.xml"
+event_type = "model_launch"
+
+[[vendor.source]]
+type = "huggingface_models"
+author = "mistralai"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Hugging Face"
+region = "global"
+entity_type = "open_source_org"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://huggingface.co/blog/feed.xml"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Alibaba Cloud"
+region = "china"
+entity_type = "big_tech"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.alibabacloud.com/blog/feed"
+event_type = "product_launch"
+
+[[vendor]]
+name = "Baidu"
+region = "china"
+entity_type = "big_tech"
+priority = "P0"
+
+[[vendor.source]]
+type = "rss"
+url = "https://news.baidu.com/feed"
+event_type = "product_launch"
+
+[[vendor]]
+name = "Tencent Cloud"
+region = "china"
+entity_type = "big_tech"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.tencentcloud.com/feed"
+event_type = "product_launch"
+
+[[vendor]]
+name = "Zhipu AI"
+region = "china"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://zhipu.ai/news/rss.xml"
+event_type = "model_launch"
+
+[[vendor]]
+name = "Moonshot AI"
+region = "china"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.moonshot.cn/news/rss.xml"
+event_type = "product_launch"
+
+[[discovery_source]]
+type = "github_search"
+name = "github-ai-recent"
+query = "topic:artificial-intelligence created:>2026-08-10 stars:>20"
+event_type = "open_source_launch"
+
+[[discovery_source]]
+type = "github_search"
+name = "github-llm-recent"
+query = "llm OR agent created:>2026-08-10 stars:>15"
+event_type = "open_source_launch"
+
+[[discovery_source]]
+type = "huggingface_models"
+name = "hf-recent-models"
+search = "text-generation"
+event_type = "model_launch"
