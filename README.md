@@ -46,10 +46,14 @@ The sample daily workflow commits generated Markdown reports back to the reposit
   - optional vendor config path override
 - `AI_INTEL_HTTP_TIMEOUT`
   - optional HTTP timeout in seconds, default `8`
+- `AI_INTEL_MAX_WORKERS`
+  - optional concurrent collector worker count, default `8`
 - `FEISHU_WEBHOOK_URL`
   - optional Feishu group bot webhook URL; when set, `run-daily` can push a summary card
 - `FEISHU_REPORT_URL`
   - optional report URL to include in the Feishu card, for example the GitHub file URL of the generated report
+- `FEISHU_TOP_N`
+  - optional number of highest-priority events to push to Feishu, default `6`
 
 ## CLI
 
@@ -62,7 +66,7 @@ ai-intel-radar collect --collector huggingface_models
 ai-intel-radar collect --collector github_search
 ai-intel-radar score
 ai-intel-radar report
-ai-intel-radar push-feishu
+ai-intel-radar push-feishu --limit 6
 ai-intel-radar run-daily
 ```
 
@@ -76,10 +80,11 @@ The current integration targets a Feishu group custom bot webhook, which is the 
 4. Run:
 
 ```bash
-ai-intel-radar push-feishu
+ai-intel-radar push-feishu --limit 6
 ```
 
 `run-daily` will automatically push when `FEISHU_WEBHOOK_URL` is configured.
+The Feishu push now uses an interactive card and only sends the top N highest-priority events.
 
 ## Data Model
 

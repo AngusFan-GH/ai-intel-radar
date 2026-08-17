@@ -15,10 +15,10 @@ class FeishuPayloadTests(unittest.TestCase):
                 "score": 88.2,
             }
         ]
-        payload = build_feishu_payload(rows, report_url="https://example.com/report")
-        self.assertEqual(payload["msg_type"], "post")
-        self.assertIn("AI 情报雷达日报", payload["content"]["post"]["zh_cn"]["title"])
+        payload = build_feishu_payload(rows, top_n=3, report_url="https://example.com/report")
+        self.assertEqual(payload["msg_type"], "interactive")
+        self.assertIn("AI 情报雷达日报", payload["card"]["header"]["title"]["content"])
         self.assertEqual(
-            payload["content"]["post"]["zh_cn"]["content"][-1][0]["href"],
+            payload["card"]["elements"][-1]["actions"][0]["url"],
             "https://example.com/report",
         )

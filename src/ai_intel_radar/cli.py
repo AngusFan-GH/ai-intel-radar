@@ -32,6 +32,7 @@ def main() -> None:
 
     feishu_parser = subparsers.add_parser("push-feishu")
     feishu_parser.add_argument("--report-url", default=None)
+    feishu_parser.add_argument("--limit", type=int, default=None)
 
     subparsers.add_parser("run-daily")
 
@@ -67,7 +68,7 @@ def main() -> None:
         return
 
     if args.command == "push-feishu":
-        push_daily_summary(report_url=args.report_url)
+        push_daily_summary(report_url=args.report_url, limit=args.limit)
         return
 
     if args.command == "run-daily":
