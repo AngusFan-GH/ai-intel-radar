@@ -28,6 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AI_INTEL_HTTP_TIMEOUT: "8"
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_REPORT_URL: ${{ secrets.FEISHU_REPORT_URL }}
         run: |
           ai-intel-radar run-daily
 

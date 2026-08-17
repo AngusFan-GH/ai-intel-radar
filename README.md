@@ -46,6 +46,10 @@ The sample daily workflow commits generated Markdown reports back to the reposit
   - optional vendor config path override
 - `AI_INTEL_HTTP_TIMEOUT`
   - optional HTTP timeout in seconds, default `8`
+- `FEISHU_WEBHOOK_URL`
+  - optional Feishu group bot webhook URL; when set, `run-daily` can push a summary card
+- `FEISHU_REPORT_URL`
+  - optional report URL to include in the Feishu card, for example the GitHub file URL of the generated report
 
 ## CLI
 
@@ -58,8 +62,24 @@ ai-intel-radar collect --collector huggingface_models
 ai-intel-radar collect --collector github_search
 ai-intel-radar score
 ai-intel-radar report
+ai-intel-radar push-feishu
 ai-intel-radar run-daily
 ```
+
+## Feishu Push
+
+The current integration targets a Feishu group custom bot webhook, which is the simplest deployment path.
+
+1. Create a custom bot in the target Feishu group.
+2. Copy the webhook URL into `FEISHU_WEBHOOK_URL`.
+3. Optionally set `FEISHU_REPORT_URL` if you want the message to include a report link.
+4. Run:
+
+```bash
+ai-intel-radar push-feishu
+```
+
+`run-daily` will automatically push when `FEISHU_WEBHOOK_URL` is configured.
 
 ## Data Model
 
@@ -81,6 +101,6 @@ Each event is normalized into one of:
 
 - expand the vendor list from 10 to 50+
 - add Product Hunt ingestion with authenticated API access
-- add Slack or Feishu push
+- add richer Feishu cards and per-section routing
 - improve similarity-based dedupe with embeddings
 - add a lightweight search UI

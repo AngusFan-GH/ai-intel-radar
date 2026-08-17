@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .config import load_config
 from .db import bootstrap_schema, fetch_unscored_events, update_scores, upsert_vendors
+from .feishu import push_daily_summary
 from .pipeline import run_collection
 from .reporting import build_daily_report
 from .scoring import score_event
@@ -28,6 +29,9 @@ def main() -> None:
 
     report_parser = subparsers.add_parser("report")
     report_parser.add_argument("--output-dir", default="reports")
+
+    feishu_parser = subparsers.add_parser("push-feishu")
+    feishu_parser.add_argument("--report-url", default=None)
 
     subparsers.add_parser("run-daily")
 
@@ -62,6 +66,10 @@ def main() -> None:
         print(f"Wrote report to {report_path}")
         return
 
+    if args.command == "push-feishu":
+        push_daily_summary(report_url=args.report_url)
+        return
+
     if args.command == "run-daily":
         bootstrap_schema()
         vendors, discovery_sources = load_config()
@@ -71,6 +79,7 @@ def main() -> None:
         scored = [(row["url"], score_event(row)) for row in rows]
         update_scores(scored)
         report_path = build_daily_report()
+        push_daily_summary()
         print(
             f"Daily run complete. collected={len(events)} inserted={inserted} "
             f"scored={len(scored)} report={report_path}"
