@@ -105,9 +105,13 @@ def _infer_event_type(default: str, title: str, summary: str | None) -> str:
     corpus = f"{title} {summary or ''}".lower()
     if any(token in corpus for token in ("model", "checkpoint", "weights")):
         return "model_launch"
-    if any(token in corpus for token in ("release", "launch", "available", "introducing", "announcing")):
+    if any(token in corpus for token in ("appoint", "chief revenue officer", "letter", "governor", "case study")):
+        return "unknown_ai_event"
+    if any(token in corpus for token in ("release", "launch", "available", "introducing", "announcing", "preview", "service tier", "ads in chatgpt")):
         return default
-    return default
+    if any(token in corpus for token in ("guide", "how enterprises", "how ", "builds ai-native")):
+        return "unknown_ai_event"
+    return "unknown_ai_event"
 
 
 def _text(node: ET.Element, selector: str) -> str:

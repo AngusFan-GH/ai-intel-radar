@@ -6,14 +6,14 @@
     <title>AI 情报雷达日报 2026-08-17</title>
     <style>
       :root {
-        --bg: #f6f2e8;
+        --bg: #f7f3ea;
         --surface: rgba(255, 251, 245, 0.84);
         --surface-strong: #fffaf2;
-        --ink: #1a1814;
+        --ink: #1b1814;
         --muted: #655f56;
         --line: rgba(38, 33, 26, 0.12);
         --accent: #0057ff;
-        --accent-soft: #d9e5ff;
+        --accent-soft: #dce7ff;
         --warm: #d86a31;
         --shadow: 0 18px 50px rgba(44, 29, 10, 0.10);
       }
@@ -27,37 +27,15 @@
           radial-gradient(circle at top right, rgba(216,106,49,0.12), transparent 24%),
           linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);
       }
-      a { color: inherit; }
-      .page {
-        width: min(1240px, calc(100vw - 32px));
-        margin: 24px auto 48px;
-      }
+      .page { width: min(1280px, calc(100vw - 32px)); margin: 24px auto 48px; }
       .hero {
-        background: linear-gradient(135deg, rgba(255,250,242,0.92), rgba(246,241,232,0.92));
+        background: linear-gradient(135deg, rgba(255,250,242,0.95), rgba(246,241,232,0.92));
         border: 1px solid var(--line);
         border-radius: 28px;
         box-shadow: var(--shadow);
         padding: 28px;
-        overflow: hidden;
-        position: relative;
       }
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: auto -10% -25% auto;
-        width: 260px;
-        height: 260px;
-        background: radial-gradient(circle, rgba(0,87,255,0.15), transparent 68%);
-        pointer-events: none;
-      }
-      .eyebrow {
-        margin: 0;
-        color: var(--warm);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 700;
-      }
+      .eyebrow { margin: 0; color: var(--warm); letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; font-weight: 700; }
       h1 {
         margin: 10px 0 12px;
         font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
@@ -65,147 +43,8 @@
         line-height: 0.95;
         letter-spacing: -0.04em;
       }
-      .hero p {
-        margin: 0;
-        max-width: 820px;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.7;
-      }
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 22px;
-      }
-      .stat-card {
-        background: var(--surface-strong);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        padding: 18px;
-      }
-      .stat-label {
-        margin: 0 0 8px;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      .stat-value {
-        margin: 0;
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-size: 36px;
-        line-height: 1;
-      }
-      .stat-note {
-        margin: 10px 0 0;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.6;
-      }
-      .section {
-        margin-top: 28px;
-      }
-      .section-header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 12px;
-        margin-bottom: 14px;
-      }
-      .section-title {
-        margin: 0;
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-size: 30px;
-        letter-spacing: -0.03em;
-      }
-      .section-meta {
-        color: var(--muted);
-        font-size: 13px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-      }
-      .card {
-        background: var(--surface);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        box-shadow: var(--shadow);
-        padding: 20px;
-        display: grid;
-        gap: 14px;
-      }
-      .card-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-      }
-      .card-title {
-        margin: 0;
-        font-size: 20px;
-        line-height: 1.35;
-        font-weight: 700;
-      }
-      .score {
-        flex-shrink: 0;
-        min-width: 78px;
-        text-align: center;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-weight: 700;
-        padding: 10px 12px;
-        height: fit-content;
-      }
-      .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.64);
-        padding: 6px 10px;
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .blurb {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.7;
-        font-size: 14px;
-      }
-      .label {
-        color: var(--ink);
-        font-weight: 700;
-      }
-      .actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        padding-top: 4px;
-      }
-      .link {
-        text-decoration: none;
-        font-weight: 700;
-        color: var(--accent);
-      }
-      .footer {
-        margin-top: 24px;
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 20px;
-      }
+      .hero p { margin: 0; max-width: 860px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
       .hero-link {
         text-decoration: none;
         display: inline-flex;
@@ -216,17 +55,35 @@
         font-weight: 700;
         border: 1px solid var(--line);
         background: var(--surface-strong);
+        color: var(--ink);
       }
-      .hero-link.primary {
-        background: var(--accent);
-        color: white;
-        border-color: transparent;
-      }
-      @media (max-width: 900px) {
-        .stats, .grid { grid-template-columns: 1fr; }
-        .card-head { flex-direction: column; }
-        .score { width: fit-content; }
-      }
+      .hero-link.primary { background: var(--accent); color: white; border-color: transparent; }
+      .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+      .stat-card { background: var(--surface-strong); border: 1px solid var(--line); border-radius: 20px; padding: 18px; }
+      .stat-label { margin: 0 0 8px; color: var(--muted); font-size: 13px; }
+      .stat-value { margin: 0; font-family: "Space Grotesk", "Noto Sans SC", sans-serif; font-size: 36px; line-height: 1; }
+      .stat-note { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .section { margin-top: 28px; }
+      .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+      .section-title { margin: 0; font-family: "Space Grotesk", "Noto Sans SC", sans-serif; font-size: 30px; letter-spacing: -0.03em; }
+      .section-meta { color: var(--muted); font-size: 13px; }
+      .vendor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .vendor-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
+      .vendor-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+      .vendor-name { margin: 0; font-size: 22px; line-height: 1.2; }
+      .vendor-count { color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 8px 12px; font-weight: 700; white-space: nowrap; height: fit-content; }
+      .event-list { display: grid; gap: 14px; }
+      .event-item { border-top: 1px solid var(--line); padding-top: 14px; }
+      .event-item:first-child { border-top: none; padding-top: 0; }
+      .event-title { margin: 0; font-size: 18px; line-height: 1.4; }
+      .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+      .pill { display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.64); padding: 6px 10px; color: var(--muted); font-size: 12px; }
+      .blurb { margin: 10px 0 0; color: var(--muted); line-height: 1.72; font-size: 14px; }
+      .label { color: var(--ink); font-weight: 700; }
+      .actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+      .link { text-decoration: none; font-weight: 700; color: var(--accent); }
+      .footer { margin-top: 24px; color: var(--muted); font-size: 12px; }
+      @media (max-width: 960px) { .stats, .vendor-grid { grid-template-columns: 1fr; } .vendor-head { flex-direction: column; } }
     </style>
   </head>
   <body>
@@ -234,616 +91,764 @@
       <section class="hero">
         <p class="eyebrow">AI Intel Radar</p>
         <h1>AI 情报雷达日报</h1>
-        <p>2026-08-17 · 当前事件池累计 130 条记录。日报按类别分别选取，减少单一类型事件淹没全局的情况，并补充“它是做什么的 / 为什么值得看”。</p>
+        <p>2026-08-17 · 当前展示池累计 130 条事件。日报已按厂商合并展示，并为每条消息补充“这是什么 / 为什么值得看 / 怎么用”，帮助读者快速理解消息本身。</p>
         <div class="hero-actions">
           <a class="hero-link primary" href="./daily-report-2026-08-17.html">打开本日报 HTML</a>
           <a class="hero-link" href="../docs/index.html">返回最新首页</a>
         </div>
         <div class="stats">
-          
         <article class="stat-card">
           <p class="stat-label">厂商新品</p>
-          <p class="stat-value">7</p>
-          <p class="stat-note">追踪官方产品与平台更新</p>
+          <p class="stat-value">3</p>
+          <p class="stat-note">官方产品、服务、发布动作</p>
         </article>
         
 
         <article class="stat-card">
           <p class="stat-label">新模型</p>
           <p class="stat-value">3</p>
-          <p class="stat-note">追踪模型发布、更新与上架</p>
+          <p class="stat-note">模型上新、更新、上架</p>
         </article>
         
 
         <article class="stat-card">
           <p class="stat-label">新开源项目</p>
           <p class="stat-value">120</p>
-          <p class="stat-note">追踪 GitHub 与开放生态信号</p>
+          <p class="stat-note">GitHub / 开源生态高热度</p>
         </article>
-        
         </div>
       </section>
       
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">厂商新品</h2>
-        <span class="section-meta">共 7 条</span>
+        <span class="section-meta">累计 3 条，当前展示 1 个厂商组</span>
       </div>
-      <div class="grid">
-        
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed</h3>
-        <div class="score">Score<br />55.22</div>
+      <div class="vendor-grid">
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">OpenAI</h3>
+        <span class="vendor-count">3 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed</h4>
       <div class="meta">
         <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 55.22</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">基础设施</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：55.22；标签：基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：Preview Ultrafast, a new OpenAI API service tier that runs GPT-5.6 Sol up to 14× faster. Powered by Cerebras, it delive…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>这类内容通常通过官方 API、控制台或服务配置启用，适合先看定价、限额和接入文档。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Preview Ultrafast, a new OpenAI API service tier that runs GPT-5.6 Sol up to 14× faster. Powered by Cerebras, it delivers up to 750 output tokens per second.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/previewing-ultrafast" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">OpenAI appoints Dali Rajic as Chief Revenue Officer</h3>
-        <div class="score">Score<br />55.06</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">Testing ads in ChatGPT</h4>
       <div class="meta">
         <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 51.00</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：55.06；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI appoints Dali Rajic as Chief Revenue Officer to lead its global revenue organization and help businesses realize…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI appoints Dali Rajic as Chief Revenue Officer to lead its global revenue organization and help businesses realize the full value of AI.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://openai.com/index/dali-rajic-chief-revenue-officer" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">From assistance to execution: How enterprises put AI to work</h3>
-        <div class="score">Score<br />51.00</div>
-      </div>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">Agent</span><span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：Agent、编程。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pu…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://openai.com/index/how-enterprises-put-ai-to-work" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">How RingCentral builds AI-native work from engineering to ops</h3>
-        <div class="score">Score<br />51.00</div>
-      </div>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：编程。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelli…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
-      <p class="blurb"><span class="label">原文摘要：</span>See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelligence across engineering and operations.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://openai.com/index/ringcentral" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">Testing ads in ChatGPT</h3>
-        <div class="score">Score<br />51.00</div>
-      </div>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy p…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是面向终端产品体验的变更，重点不是模型本身，而是 ChatGPT 的产品形态和商业化策略。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先打开原链接查看官方说明、接入方式和限制条件，再决定是否纳入你的工作流。</p>
       <p class="blurb"><span class="label">原文摘要：</span>OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">What building an AI-native finance function taught me</h3>
-        <div class="score">Score<br />51.00</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">What building an AI-native finance function taught me</h4>
       <div class="meta">
         <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 51.00</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to st…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是官方发布源中的一条更新，核心内容是：OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to st…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先打开原链接查看官方说明、接入方式和限制条件，再决定是否纳入你的工作流。</p>
       <p class="blurb"><span class="label">原文摘要：</span>OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to stronger controls and AI ROI.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/building-an-ai-native-finance-function" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    </div>
     </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">OpenAI’s letter to Governor Abbott on responsible AI infrastructure in Texas</h3>
-        <div class="score">Score<br />51.00</div>
-      </div>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">OpenAI</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI sent Governor Greg Abbott a letter outlining its commitment to responsible AI infrastructure in Texas. The lette…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI sent Governor Greg Abbott a letter outlining its commitment to responsible AI infrastructure in Texas. The letter supports reliable, transparent growth that benefits Texans.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://openai.com/index/responsible-ai-infrastructure-texas" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-      </div>
+    </div>
     </section>
     
 
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">新模型</h2>
-        <span class="section-meta">共 3 条</span>
+        <span class="section-meta">累计 3 条，当前展示 1 个厂商组</span>
       </div>
-      <div class="grid">
-        
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">The builder’s guide to GPT‑5.6</h3>
-        <div class="score">Score<br />57.39</div>
+      <div class="vendor-grid">
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">OpenAI</h3>
+        <span class="vendor-count">3 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">The builder’s guide to GPT‑5.6</h4>
       <div class="meta">
         <span class="pill">模型发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 57.39</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">Agent</span><span class="pill">基础设施</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：模型发布；来源：官方资讯源；评分：57.39；标签：Agent、基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：Learn how startups use GPT-5.6 to build faster, more cost-efficient AI agents with smarter model selection and new Resp…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>这类内容通常通过官方 API、控制台或服务配置启用，适合先看定价、限额和接入文档。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Learn how startups use GPT-5.6 to build faster, more cost-efficient AI agents with smarter model selection and new Responses API capabilities.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/builders-guide-to-gpt-5-6" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">Daybreak models are now available on AWS</h3>
-        <div class="score">Score<br />53.00</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">Daybreak models are now available on AWS</h4>
       <div class="meta">
         <span class="pill">模型发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 53.00</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：模型发布；来源：官方资讯源；评分：53.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：OpenAI and AWS are making Daybreak cybersecurity capabilities available through Amazon Bedrock to support enterprise se…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是模型或能力在云平台上的可用性更新，重点在于企业可以通过现有云服务更快接入。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>如果你在 AWS 体系内，可以优先通过 Bedrock 或相关官方接入路径启用，而不是自行部署。</p>
       <p class="blurb"><span class="label">原文摘要：</span>OpenAI and AWS are making Daybreak cybersecurity capabilities available through Amazon Bedrock to support enterprise security workflows.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/daybreak-models-are-now-available-on-aws" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">Model ML completes finance work more efficiently with GPT-5.6 Sol</h3>
-        <div class="score">Score<br />53.00</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">Model ML completes finance work more efficiently with GPT-5.6 Sol</h4>
       <div class="meta">
         <span class="pill">模型发布</span>
-        <span class="pill">OpenAI</span>
+        <span class="pill">Score 53.00</span>
         <span class="pill">官方资讯源</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：OpenAI；事件类型：模型发布；来源：官方资讯源；评分：53.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>这是官方发布源中的一条更新，核心内容是：Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">这是什么：</span>这是官方发布源中的一条更新，核心内容是：Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先打开原链接查看官方说明、接入方式和限制条件，再决定是否纳入你的工作流。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks and Excel workbooks.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://openai.com/index/model-ml" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    </div>
     </article>
-    
-      </div>
+    </div>
     </section>
     
 
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">新开源项目</h2>
-        <span class="section-meta">共 15 条</span>
+        <span class="section-meta">累计 120 条，当前展示 10 个厂商组</span>
       </div>
-      <div class="grid">
-        
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">deepseek-ai/deepseek-harness is trending</h3>
-        <div class="score">Score<br />76.00</div>
+      <div class="vendor-grid">
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">DeepSeek</h3>
+        <span class="vendor-count">3 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">deepseek-ai/deepseek-harness is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">deepseek-ai</span>
+        <span class="pill">Score 76.00</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`deepseek-ai/deepseek-harness` 是一个以 TypeScript 为主的项目，定位是：DeepSeek Harness: Everything is a Plugin.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 142936 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`deepseek-ai/deepseek-harness` 是一个用于扩展现有 AI 系统能力的插件或集成项目。当前公开描述是：DeepSeek Harness: Everything is a Plugin.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 142936 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先阅读 `deepseek-ai/deepseek-harness` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。</p>
       <p class="blurb"><span class="label">原文摘要：</span>DeepSeek Harness: Everything is a Plugin.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">0xsline/awesome-deepseek-harness is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 76.00</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">基础设施</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`0xsline/awesome-deepseek-harness` 是一个用于扩展现有 AI 系统能力的插件或集成项目。当前公开描述是：DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topi…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 655 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先阅读 `0xsline/awesome-deepseek-harness` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/0xsline/awesome-deepseek-harness" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">deepseek-ai/awesome-deepseek-agent is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.98</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">Agent</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`deepseek-ai/awesome-deepseek-agent` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：暂无更详细描述。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 5896 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>开发者可以先 clone `deepseek-ai/awesome-deepseek-agent`，按 README 安装依赖，然后在本地终端或开发流程中试用。</p>
+      
+      <div class="actions">
+        <a class="link" href="https://github.com/deepseek-ai/awesome-deepseek-agent" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
     </article>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">MiniMax-AI/MiniMax-H3 is trending</h3>
-        <div class="score">Score<br />76.00</div>
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">MiniMax</h3>
+        <span class="vendor-count">3 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">MiniMax-AI/MiniMax-H3 is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">MiniMax-AI</span>
+        <span class="pill">Score 76.00</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：MiniMax-AI；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`MiniMax-AI/MiniMax-H3` 是新近活跃的开源项目，当前需要进一步补充项目说明。</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 6062 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`MiniMax-AI/MiniMax-H3` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：暂无更详细描述。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 6062 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `MiniMax-AI/MiniMax-H3` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
       
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">MiniMax-AI/MiniMax-Music3 is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.90</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`MiniMax-AI/MiniMax-Music3` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：暂无更详细描述。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 498 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `MiniMax-AI/MiniMax-Music3` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
+      
+      <div class="actions">
+        <a class="link" href="https://github.com/MiniMax-AI/MiniMax-Music3" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">MiniMax-AI/cli is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.52</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">图像</span><span class="pill">视频</span><span class="pill">语音</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`MiniMax-AI/cli` 是一个用于语音处理或语音识别的开源项目。当前公开描述是：Generate text, images, video, speech, and music by MiniMax.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 2046 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>把 `MiniMax-AI/cli` 用作语音能力组件，常见用法是本地推理、批量转写，或包装成服务接口。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Generate text, images, video, speech, and music by MiniMax.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/MiniMax-AI/cli" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
     </article>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">QwenLM/Qwen-MM-Plugins is trending</h3>
-        <div class="score">Score<br />76.00</div>
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">Qwen</h3>
+        <span class="vendor-count">3 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">QwenLM/Qwen-MM-Plugins is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">QwenLM</span>
+        <span class="pill">Score 76.00</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">Agent</span><span class="pill">多模态</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：Agent、多模态。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`QwenLM/Qwen-MM-Plugins` 是一个以 HTML 为主的项目，定位是：Make any agent harness multimodal-native.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 2657 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`QwenLM/Qwen-MM-Plugins` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：Make any agent harness multimodal-native.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 2657 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先阅读 `QwenLM/Qwen-MM-Plugins` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Make any agent harness multimodal-native.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/QwenLM/Qwen-MM-Plugins" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">0xsline/awesome-deepseek-harness is trending</h3>
-        <div class="score">Score<br />76.00</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">QwenLM/Qwen3.8 is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">0xsline</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：0xsline；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`0xsline/awesome-deepseek-harness` 是一个以 Python 为主的项目，定位是：DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-p…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 655 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/0xsline/awesome-deepseek-harness" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">elie222/rakazo is trending</h3>
-        <div class="score">Score<br />75.99</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">elie222</span>
+        <span class="pill">Score 75.99</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：elie222；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`elie222/rakazo` 是一个以 TypeScript 为主的项目，定位是：Open-source Grok Bot alternative. Choose your own model and sandbox.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 606 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Open-source Grok Bot alternative. Choose your own model and sandbox.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/elie222/rakazo" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">modelscope/FunASR is trending</h3>
-        <div class="score">Score<br />75.99</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">modelscope</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">语音</span><span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：modelscope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：语音、基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`modelscope/FunASR` 是一个以 Python 为主的项目，定位是：Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pi…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 19883 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, and OpenAI-compatible/MCP serving.</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/modelscope/FunASR" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">QwenLM/Qwen3.8 is trending</h3>
-        <div class="score">Score<br />75.99</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">QwenLM</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`QwenLM/Qwen3.8` 的定位是：Qwen3.8 is the large language model series developed by Qwen team, Alibaba Group.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 3801 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`QwenLM/Qwen3.8` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：Qwen3.8 is the large language model series developed by Qwen team, Alibaba Group.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 3801 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Qwen3.8 is the large language model series developed by Qwen team, Alibaba Group.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/QwenLM/Qwen3.8" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">ysr666/dsh-vision-router is trending</h3>
-        <div class="score">Score<br />75.99</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">QwenLM/qwen-code is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">ysr666</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span><span class="pill">图像</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：ysr666；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：Agent、图像。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`ysr666/dsh-vision-router` 是一个以 JavaScript 为主的项目，定位是：Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, ground…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 541 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screen</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/ysr666/dsh-vision-router" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">deepseek-ai/awesome-deepseek-agent is trending</h3>
-        <div class="score">Score<br />75.98</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">deepseek-ai</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.98；标签：Agent。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`deepseek-ai/awesome-deepseek-agent` 是新近活跃的开源项目，当前需要进一步补充项目说明。</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 5896 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/deepseek-ai/awesome-deepseek-agent" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">ByteDance-Seed/EdgeBench is trending</h3>
-        <div class="score">Score<br />75.97</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">ByteDance-Seed</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：ByteDance-Seed；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`ByteDance-Seed/EdgeBench` 是一个以 Python 为主的项目，定位是：EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 424 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/ByteDance-Seed/EdgeBench" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">deepseek-ai/awesome-deepseek-integration is trending</h3>
-        <div class="score">Score<br />75.97</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">deepseek-ai</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：deepseek-ai；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：基础设施。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`deepseek-ai/awesome-deepseek-integration` 的定位是：Integrate the DeepSeek API into popular software</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 38812 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Integrate the DeepSeek API into popular software</p>
-      <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/deepseek-ai/awesome-deepseek-integration" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">QwenLM/qwen-code is trending</h3>
-        <div class="score">Score<br />75.97</div>
-      </div>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">QwenLM</span>
+        <span class="pill">Score 75.97</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">Agent</span><span class="pill">编程</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：QwenLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：Agent、编程。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`QwenLM/qwen-code` 是一个以 TypeScript 为主的项目，定位是：An open-source AI coding agent that lives in your terminal.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 27097 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`QwenLM/qwen-code` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：An open-source AI coding agent that lives in your terminal.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 27097 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>开发者可以先 clone `QwenLM/qwen-code`，按 README 安装依赖，然后在本地终端或开发流程中试用。</p>
       <p class="blurb"><span class="label">原文摘要：</span>An open-source AI coding agent that lives in your terminal.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/QwenLM/qwen-code" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    </div>
     </article>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">InternLM/WildClawBench is trending</h3>
-        <div class="score">Score<br />75.96</div>
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">elie222</h3>
+        <span class="vendor-count">1 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">elie222/rakazo is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">InternLM</span>
+        <span class="pill">Score 75.99</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`elie222/rakazo` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：Open-source Grok Bot alternative. Choose your own model and sandbox.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 606 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Open-source Grok Bot alternative. Choose your own model and sandbox.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/elie222/rakazo" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">ModelScope</h3>
+        <span class="vendor-count">3 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">modelscope/FunASR is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.99</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">语音</span><span class="pill">基础设施</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`modelscope/FunASR` 是一个用于语音处理或语音识别的开源项目。当前公开描述是：Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, a…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 19883 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>把 `modelscope/FunASR` 用作语音能力组件，常见用法是本地推理、批量转写，或包装成服务接口。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, and OpenAI-compatible/MCP serving.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/modelscope/FunASR" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">modelscope/evalscope is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.95</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`modelscope/evalscope` 是一个用于评测模型或 agent 能力的开源项目。当前公开描述是：A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 3249 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>把 `modelscope/evalscope` 当作评测工具使用，准备待测模型或 agent，然后按仓库脚本运行 benchmark。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/modelscope/evalscope" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">modelscope/DiffSynth-Studio is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.87</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">图像</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`modelscope/DiffSynth-Studio` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：Enjoy the magic of Diffusion models!</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 12945 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Enjoy the magic of Diffusion models!</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/modelscope/DiffSynth-Studio" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">ysr666</h3>
+        <span class="vendor-count">1 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">ysr666/dsh-vision-router is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.99</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">Agent</span><span class="pill">图像</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`ysr666/dsh-vision-router` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, grounding, crop,…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 541 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先阅读 `ysr666/dsh-vision-router` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, scree…</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/ysr666/dsh-vision-router" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">字节 Seed</h3>
+        <span class="vendor-count">3 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">ByteDance-Seed/EdgeBench is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.97</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`ByteDance-Seed/EdgeBench` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 424 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `ByteDance-Seed/EdgeBench` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/ByteDance-Seed/EdgeBench" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">ByteDance-Seed/VeOmni is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.61</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`ByteDance-Seed/VeOmni` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：VeOmni: Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 2154 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>VeOmni: Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/ByteDance-Seed/VeOmni" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">ByteDance-Seed/Depth-Anything-3 is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.31</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`ByteDance-Seed/Depth-Anything-3` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：Depth Anything 3</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 6136 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `ByteDance-Seed/Depth-Anything-3` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Depth Anything 3</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/ByteDance-Seed/Depth-Anything-3" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">InternLM</h3>
+        <span class="vendor-count">3 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">InternLM/WildClawBench is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.96</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">Agent</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：Agent。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`InternLM/WildClawBench` 是一个以 Python 为主的项目，定位是：An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 513 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`InternLM/WildClawBench` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 513 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>把 `InternLM/WildClawBench` 当作评测工具使用，准备待测模型或 agent，然后按仓库脚本运行 benchmark。</p>
       <p class="blurb"><span class="label">原文摘要：</span>An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/InternLM/WildClawBench" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">MoonshotAI/Kimi-K3 is trending</h3>
-        <div class="score">Score<br />75.95</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">InternLM/xtuner is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">MoonshotAI</span>
+        <span class="pill">Score 75.87</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：MoonshotAI；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.95；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`MoonshotAI/Kimi-K3` 的定位是：Open Frontier Intelligence</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 8483 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">这是什么：</span>`InternLM/xtuner` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 5180 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/InternLM/xtuner" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">InternLM/lmdeploy is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.79</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`InternLM/lmdeploy` 是一个围绕模型权重、模型推理或模型家族的开源项目。当前公开描述是：LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 8011 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `InternLM/lmdeploy` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/InternLM/lmdeploy" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">月之暗面</h3>
+        <span class="vendor-count">3 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">MoonshotAI/Kimi-K3 is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.95</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`MoonshotAI/Kimi-K3` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：Open Frontier Intelligence</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 8483 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `MoonshotAI/Kimi-K3` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
       <p class="blurb"><span class="label">原文摘要：</span>Open Frontier Intelligence</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
         <a class="link" href="https://github.com/MoonshotAI/Kimi-K3" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
-    </article>
+    </div>
     
 
-    <article class="card">
-      <div class="card-head">
-        <h3 class="card-title">modelscope/evalscope is trending</h3>
-        <div class="score">Score<br />75.95</div>
-      </div>
+    <div class="event-item">
+      <h4 class="event-title">MoonshotAI/FlashKDA is trending</h4>
       <div class="meta">
         <span class="pill">开源项目发布</span>
-        <span class="pill">modelscope</span>
+        <span class="pill">Score 75.89</span>
         <span class="pill">GitHub 发现流</span>
         <span class="pill">未打标签</span>
       </div>
-      <p class="blurb"><span class="label">中文说明：</span>主体：modelscope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.95；标签：未打标签。</p>
-      <p class="blurb"><span class="label">它是做什么的：</span>`modelscope/evalscope` 是一个以 Python 为主的项目，定位是：A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmar…</p>
-      <p class="blurb"><span class="label">值得关注的原因：</span>当前记录到约 3249 个 GitHub stars；进入了 GitHub 发现流，说明近期活跃度或关注度较高；属于近 24 小时内的新鲜事件</p>
-      <p class="blurb"><span class="label">原文摘要：</span>A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.</p>
+      <p class="blurb"><span class="label">这是什么：</span>`MoonshotAI/FlashKDA` 是一个面向 AI 应用或基础设施的开源项目。当前公开描述是：FlashKDA: high-performance Kimi Delta Attention kernels</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 1215 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>建议先查看 `MoonshotAI/FlashKDA` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>FlashKDA: high-performance Kimi Delta Attention kernels</p>
       <div class="actions">
-        <span class="pill">已结构化</span>
-        <a class="link" href="https://github.com/modelscope/evalscope" target="_blank" rel="noreferrer">查看原链接</a>
+        <a class="link" href="https://github.com/MoonshotAI/FlashKDA" target="_blank" rel="noreferrer">查看原链接</a>
       </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">MoonshotAI/kimi-cli is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.88</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">Agent</span><span class="pill">编程</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`MoonshotAI/kimi-cli` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：Kimi Code CLI is your next CLI agent.</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 11200 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>开发者可以先 clone `MoonshotAI/kimi-cli`，按 README 安装依赖，然后在本地终端或开发流程中试用。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>Kimi Code CLI is your next CLI agent.</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/MoonshotAI/kimi-cli" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
     </article>
     
+
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">Anionex</h3>
+        <span class="vendor-count">1 条重点</span>
       </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">Anionex/dsh-vision-toolkit is trending</h4>
+      <div class="meta">
+        <span class="pill">开源项目发布</span>
+        <span class="pill">Score 75.95</span>
+        <span class="pill">GitHub 发现流</span>
+        <span class="pill">Agent</span><span class="pill">图像</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>`Anionex/dsh-vision-toolkit` 是一个面向 AI agent 或编码助手的开源项目。当前公开描述是：让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&amp;A…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>当前记录到约 582 个 GitHub stars；近期在 GitHub 发现流中活跃，说明关注度或增长较高；属于近 24 小时内的新鲜事件</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先阅读 `Anionex/dsh-vision-toolkit` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&amp;A, long-screenshot OCR, UI restoration, grounding,…</p>
+      <div class="actions">
+        <a class="link" href="https://github.com/Anionex/dsh-vision-toolkit" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    </div>
     </section>
     
-      <p class="footer">本页面由 AI Intel Radar 自动生成。Markdown 版本与 HTML 版本保存在同一 reports 目录。</p>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">其他观察</h2>
+        <span class="section-meta">累计 4 条，当前展示 1 个厂商组</span>
+      </div>
+      <div class="vendor-grid">
+    <article class="vendor-card">
+      <div class="vendor-head">
+        <h3 class="vendor-name">OpenAI</h3>
+        <span class="vendor-count">3 条重点</span>
+      </div>
+      <div class="event-list">
+    <div class="event-item">
+      <h4 class="event-title">OpenAI appoints Dali Rajic as Chief Revenue Officer</h4>
+      <div class="meta">
+        <span class="pill">观察事项</span>
+        <span class="pill">Score 55.06</span>
+        <span class="pill">官方资讯源</span>
+        <span class="pill">未打标签</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>这更偏公司运营或政策沟通，并不是严格意义上的新产品发布。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>优先打开原链接查看官方说明、接入方式和限制条件，再决定是否纳入你的工作流。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>OpenAI appoints Dali Rajic as Chief Revenue Officer to lead its global revenue organization and help businesses realize the full value of AI.</p>
+      <div class="actions">
+        <a class="link" href="https://openai.com/index/dali-rajic-chief-revenue-officer" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">From assistance to execution: How enterprises put AI to work</h4>
+      <div class="meta">
+        <span class="pill">观察事项</span>
+        <span class="pill">Score 51.00</span>
+        <span class="pill">官方资讯源</span>
+        <span class="pill">Agent</span><span class="pill">编程</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>这是一篇官方实践或方法说明，核心是解释某个模型或能力在真实业务中的使用方式。</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>这更像案例或实践参考，适合借鉴落地方式，而不是直接安装使用。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.</p>
+      <div class="actions">
+        <a class="link" href="https://openai.com/index/how-enterprises-put-ai-to-work" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    
+
+    <div class="event-item">
+      <h4 class="event-title">How RingCentral builds AI-native work from engineering to ops</h4>
+      <div class="meta">
+        <span class="pill">观察事项</span>
+        <span class="pill">Score 51.00</span>
+        <span class="pill">官方资讯源</span>
+        <span class="pill">编程</span>
+      </div>
+      <p class="blurb"><span class="label">这是什么：</span>这是官方发布源中的一条更新，核心内容是：See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelli…</p>
+      <p class="blurb"><span class="label">为什么值得看：</span>来自官方发布源，可信度较高</p>
+      <p class="blurb"><span class="label">怎么用：</span>这更像案例或实践参考，适合借鉴落地方式，而不是直接安装使用。</p>
+      <p class="blurb"><span class="label">原文摘要：</span>See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelligence across engineering and operations.</p>
+      <div class="actions">
+        <a class="link" href="https://openai.com/index/ringcentral" target="_blank" rel="noreferrer">查看原链接</a>
+      </div>
+    </div>
+    </div>
+    </article>
+    </div>
+    </section>
+    
+      <p class="footer">注：当前产品/模型类源存在可用性差异，因此日报已做“按厂商聚合 + 重分类展示”，减少单一厂商刷屏。</p>
     </main>
   </body>
 </html>
