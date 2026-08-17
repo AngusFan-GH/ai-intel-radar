@@ -33,7 +33,7 @@ ai-intel-radar sync-vendors
 ai-intel-radar run-daily
 ```
 
-Reports are written to `reports/`, and each daily run now generates both Markdown and HTML versions.
+Reports are written to `reports/`, and each daily run now generates both Markdown and HTML versions. A GitHub Pages site is also generated under `docs/`.
 The sample daily workflow commits generated Markdown reports back to the repository.
 
 ## Environment Variables

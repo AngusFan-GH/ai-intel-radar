@@ -10,6 +10,10 @@ from .db import fetch_event_counts, fetch_events_by_type, fetch_recent_events
 
 def build_daily_report(output_dir: Path = Path("reports")) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
+    docs_dir = Path("docs")
+    docs_reports_dir = docs_dir / "reports"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    docs_reports_dir.mkdir(parents=True, exist_ok=True)
     section_rows = {
         "厂商新品": fetch_events_by_type("product_launch", limit=10),
         "新模型": fetch_events_by_type("model_launch", limit=10),
@@ -20,6 +24,7 @@ def build_daily_report(output_dir: Path = Path("reports")) -> Path:
     today = datetime.now().strftime("%Y-%m-%d")
     markdown_path = output_dir / f"daily-report-{today}.md"
     html_path = output_dir / f"daily-report-{today}.html"
+    docs_html_path = docs_reports_dir / f"daily-report-{today}.html"
     counts = fetch_event_counts()
     sections: dict[str, list[dict]] = {}
     for section_name, rows in section_rows.items():
@@ -49,8 +54,26 @@ def build_daily_report(output_dir: Path = Path("reports")) -> Path:
         content.extend(_render_markdown_item(item) for item in items[:15])
         content.append("")
 
+    html_report = _render_html_report(
+        today,
+        total,
+        counts,
+        sections,
+        primary_href=f"./daily-report-{today}.html",
+        home_href="../docs/index.html",
+    )
+    docs_html_report = _render_html_report(
+        today,
+        total,
+        counts,
+        sections,
+        primary_href=f"./daily-report-{today}.html",
+        home_href="../index.html",
+    )
     markdown_path.write_text("\n".join(content).strip() + "\n", encoding="utf-8")
-    html_path.write_text(_render_html_report(today, total, counts, sections), encoding="utf-8")
+    html_path.write_text(html_report, encoding="utf-8")
+    docs_html_path.write_text(docs_html_report, encoding="utf-8")
+    _write_docs_index(docs_dir, today, counts, total)
     return markdown_path
 
 
@@ -96,7 +119,14 @@ def _render_markdown_item(item: dict) -> str:
     return "\n".join(lines)
 
 
-def _render_html_report(today: str, total: int, counts: dict[str, int], sections: dict[str, list[dict]]) -> str:
+def _render_html_report(
+    today: str,
+    total: int,
+    counts: dict[str, int],
+    sections: dict[str, list[dict]],
+    primary_href: str,
+    home_href: str,
+) -> str:
     stats = [
         ("厂商新品", counts.get("product_launch", 0), "追踪官方产品与平台更新"),
         ("新模型", counts.get("model_launch", 0), "追踪模型发布、更新与上架"),
@@ -319,6 +349,28 @@ def _render_html_report(today: str, total: int, counts: dict[str, int], sections
         color: var(--muted);
         font-size: 12px;
       }}
+      .hero-actions {{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }}
+      .hero-link {{
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 700;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+      }}
+      .hero-link.primary {{
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }}
       @media (max-width: 900px) {{
         .stats, .grid {{ grid-template-columns: 1fr; }}
         .card-head {{ flex-direction: column; }}
@@ -332,6 +384,10 @@ def _render_html_report(today: str, total: int, counts: dict[str, int], sections
         <p class="eyebrow">AI Intel Radar</p>
         <h1>AI 情报雷达日报</h1>
         <p>{html.escape(today)} · 当前事件池累计 {total} 条记录。日报按类别分别选取，减少单一类型事件淹没全局的情况，并补充“它是做什么的 / 为什么值得看”。</p>
+        <div class="hero-actions">
+          <a class="hero-link primary" href="{html.escape(primary_href)}">打开本日报 HTML</a>
+          <a class="hero-link" href="{html.escape(home_href)}">返回最新首页</a>
+        </div>
         <div class="stats">
           {stat_html}
         </div>
@@ -342,6 +398,103 @@ def _render_html_report(today: str, total: int, counts: dict[str, int], sections
   </body>
 </html>
 """
+
+
+def _write_docs_index(docs_dir: Path, today: str, counts: dict[str, int], total: int) -> None:
+    index_html = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 情报雷达</title>
+    <style>
+      body {{
+        margin: 0;
+        font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", sans-serif;
+        background: linear-gradient(180deg, #fcfaf5 0%, #efe7da 100%);
+        color: #171512;
+      }}
+      .page {{
+        width: min(980px, calc(100vw - 32px));
+        margin: 40px auto;
+        background: rgba(255,255,255,0.75);
+        border: 1px solid rgba(23,21,18,0.12);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 18px 50px rgba(44, 29, 10, 0.10);
+      }}
+      h1 {{
+        margin: 0 0 10px;
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 0.95;
+      }}
+      p {{
+        color: #625b52;
+        line-height: 1.7;
+      }}
+      .cta {{
+        display: inline-flex;
+        margin-top: 8px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        background: #0057ff;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+      }}
+      .stats {{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }}
+      .stat {{
+        border-radius: 18px;
+        border: 1px solid rgba(23,21,18,0.12);
+        background: rgba(255,250,242,0.9);
+        padding: 16px;
+      }}
+      .stat b {{
+        display: block;
+        font-size: 30px;
+        margin-top: 8px;
+      }}
+      .archive {{
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(23,21,18,0.12);
+      }}
+      .archive a {{
+        color: #0057ff;
+        text-decoration: none;
+        font-weight: 700;
+      }}
+      @media (max-width: 760px) {{
+        .stats {{ grid-template-columns: 1fr; }}
+      }}
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1>AI 情报雷达</h1>
+      <p>这个页面用于 GitHub Pages 展示最新日报。打开后直接进入 HTML 报告，不需要再看仓库里的 Markdown 文件。</p>
+      <a class="cta" href="./reports/daily-report-{html.escape(today)}.html">打开最新日报</a>
+      <div class="stats">
+        <section class="stat">厂商新品<b>{counts.get('product_launch', 0)}</b></section>
+        <section class="stat">新模型<b>{counts.get('model_launch', 0)}</b></section>
+        <section class="stat">新开源项目<b>{counts.get('open_source_launch', 0)}</b></section>
+      </div>
+      <div class="archive">
+        <p>当前事件池累计 {total} 条记录。</p>
+        <a href="./reports/daily-report-{html.escape(today)}.html">查看 {html.escape(today)} 归档页</a>
+      </div>
+    </main>
+  </body>
+</html>
+"""
+    index_path = docs_dir / "index.html"
+    index_path.write_text(index_html, encoding="utf-8")
 
 
 def _render_html_section(section_name: str, items: list[dict]) -> str:

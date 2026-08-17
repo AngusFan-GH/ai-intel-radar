@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 情报雷达</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", sans-serif;
+        background: linear-gradient(180deg, #fcfaf5 0%, #efe7da 100%);
+        color: #171512;
+      }
+      .page {
+        width: min(980px, calc(100vw - 32px));
+        margin: 40px auto;
+        background: rgba(255,255,255,0.75);
+        border: 1px solid rgba(23,21,18,0.12);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 18px 50px rgba(44, 29, 10, 0.10);
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 0.95;
+      }
+      p {
+        color: #625b52;
+        line-height: 1.7;
+      }
+      .cta {
+        display: inline-flex;
+        margin-top: 8px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        background: #0057ff;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }
+      .stat {
+        border-radius: 18px;
+        border: 1px solid rgba(23,21,18,0.12);
+        background: rgba(255,250,242,0.9);
+        padding: 16px;
+      }
+      .stat b {
+        display: block;
+        font-size: 30px;
+        margin-top: 8px;
+      }
+      .archive {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(23,21,18,0.12);
+      }
+      .archive a {
+        color: #0057ff;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      @media (max-width: 760px) {
+        .stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1>AI 情报雷达</h1>
+      <p>这个页面用于 GitHub Pages 展示最新日报。打开后直接进入 HTML 报告，不需要再看仓库里的 Markdown 文件。</p>
+      <a class="cta" href="./reports/daily-report-2026-08-17.html">打开最新日报</a>
+      <div class="stats">
+        <section class="stat">厂商新品<b>7</b></section>
+        <section class="stat">新模型<b>3</b></section>
+        <section class="stat">新开源项目<b>120</b></section>
+      </div>
+      <div class="archive">
+        <p>当前事件池累计 130 条记录。</p>
+        <a href="./reports/daily-report-2026-08-17.html">查看 2026-08-17 归档页</a>
+      </div>
+    </main>
+  </body>
+</html>
