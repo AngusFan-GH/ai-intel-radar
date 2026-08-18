@@ -13,7 +13,7 @@ class HuggingFaceModelsCollector(Collector):
     source_type = "huggingface_models"
 
     def collect(self, source: Source) -> list[Event]:
-        params = {"limit": "10", "sort": "lastModified", "direction": "-1"}
+        params = {"limit": str(source.limit), "sort": "lastModified", "direction": "-1"}
         if source.author:
             params["author"] = source.author
         if source.query:

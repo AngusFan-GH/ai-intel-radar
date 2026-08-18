@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import tomllib
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from .models import Source, Vendor
@@ -31,8 +32,9 @@ def load_config(path: Path | None = None) -> tuple[list[Vendor], list[Source]]:
                 url=source.get("url"),
                 repo=source.get("repo"),
                 author=source.get("author"),
-                query=source.get("query"),
+                query=_resolve_dynamic_text(source.get("query") or source.get("search")),
                 name=source.get("name"),
+                limit=_resolve_limit(source.get("limit")),
             )
             for source in item.get("source", [])
         ]
@@ -56,9 +58,39 @@ def load_config(path: Path | None = None) -> tuple[list[Vendor], list[Source]]:
             url=source.get("url"),
             repo=source.get("repo"),
             author=source.get("author"),
-            query=source.get("query"),
+            query=_resolve_dynamic_text(source.get("query") or source.get("search")),
             name=source.get("name"),
+            limit=_resolve_limit(source.get("limit")),
         )
         for source in payload.get("discovery_source", [])
     ]
     return vendors, discovery_sources
+
+
+def _resolve_dynamic_text(value: str | None) -> str | None:
+    if not value:
+        return value
+
+    today = datetime.now().date()
+    resolved = value.replace("{{today}}", today.isoformat())
+
+    while "{{days_ago:" in resolved:
+        start = resolved.find("{{days_ago:")
+        end = resolved.find("}}", start)
+        if end == -1:
+            break
+        token = resolved[start : end + 2]
+        try:
+            days = int(token[len("{{days_ago:") : -2])
+        except ValueError:
+            break
+        replacement = (today - timedelta(days=days)).isoformat()
+        resolved = resolved.replace(token, replacement, 1)
+
+    return resolved
+
+
+def _resolve_limit(value: int | None) -> int:
+    if value is None:
+        return 10
+    return max(1, int(value))

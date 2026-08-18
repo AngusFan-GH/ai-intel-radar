@@ -11,6 +11,12 @@ It uses a dual-engine design:
 - `known vendor monitoring`: official blogs, GitHub releases, Hugging Face orgs
 - `unknown discovery`: GitHub search and other broad signals
 
+The source strategy is layered:
+
+- `official release feeds`: vendor news/blog RSS as the primary source for products and model launches
+- `official open source surfaces`: GitHub org releases and Hugging Face author pages
+- `broad discovery flows`: recent GitHub and Hugging Face queries with rolling date windows
+
 ## Features
 
 - TOML-based vendor and discovery source config
@@ -18,6 +24,8 @@ It uses a dual-engine design:
 - RSS/Atom ingestion without third-party dependencies
 - GitHub release and repository discovery ingestion via public API
 - Hugging Face model discovery via public API
+- HTML vendor page ingestion for official sites that do not provide stable RSS feeds
+- rolling query templates such as `{{days_ago:7}}` for discovery freshness
 - event scoring and daily Markdown report generation
 - CLI for bootstrapping, collecting, scoring, and report generation
 
@@ -45,7 +53,9 @@ The sample daily workflow commits generated Markdown reports back to the reposit
 - `AI_INTEL_CONFIG_PATH`
   - optional vendor config path override
 - `AI_INTEL_HTTP_TIMEOUT`
-  - optional HTTP timeout in seconds, default `8`
+  - optional HTTP timeout in seconds, default `15`
+- `AI_INTEL_HTTP_RETRIES`
+  - optional retry count for transient HTTP failures, default `3`
 - `AI_INTEL_MAX_WORKERS`
   - optional concurrent collector worker count, default `8`
 - `FEISHU_WEBHOOK_URL`
@@ -64,6 +74,7 @@ ai-intel-radar collect --collector rss
 ai-intel-radar collect --collector github_releases
 ai-intel-radar collect --collector huggingface_models
 ai-intel-radar collect --collector github_search
+ai-intel-radar collect --collector html_news
 ai-intel-radar score
 ai-intel-radar report
 ai-intel-radar push-feishu --limit 6

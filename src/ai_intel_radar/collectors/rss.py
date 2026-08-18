@@ -23,7 +23,7 @@ class RSSCollector(Collector):
         events: list[Event] = []
 
         if items:
-            for item in items[:10]:
+            for item in items[: source.limit]:
                 title = _text(item, "title")
                 link = _text(item, "link")
                 summary = _sanitize(_text(item, "description"))
@@ -38,7 +38,7 @@ class RSSCollector(Collector):
                     )
                 )
         else:
-            for entry in entries[:10]:
+            for entry in entries[: source.limit]:
                 title = _text(entry, "{http://www.w3.org/2005/Atom}title")
                 link = ""
                 for child in entry.findall("{http://www.w3.org/2005/Atom}link"):
@@ -103,11 +103,41 @@ def infer_tags(title: str, summary: str | None) -> list[str]:
 
 def _infer_event_type(default: str, title: str, summary: str | None) -> str:
     corpus = f"{title} {summary or ''}".lower()
-    if any(token in corpus for token in ("model", "checkpoint", "weights")):
+    if any(token in corpus for token in ("model", "checkpoint", "weights", "reasoning model", "vlm", "llm")):
         return "model_launch"
-    if any(token in corpus for token in ("appoint", "chief revenue officer", "letter", "governor", "case study")):
+    if any(
+        token in corpus
+        for token in (
+            "appoint",
+            "chief revenue officer",
+            "letter",
+            "governor",
+            "case study",
+            "customer story",
+            "enterprise adoption",
+            "report",
+            "survey",
+        )
+    ):
         return "unknown_ai_event"
-    if any(token in corpus for token in ("release", "launch", "available", "introducing", "announcing", "preview", "service tier", "ads in chatgpt")):
+    if any(
+        token in corpus
+        for token in (
+            "release",
+            "launch",
+            "available",
+            "introducing",
+            "announcing",
+            "preview",
+            "service tier",
+            "ads in chatgpt",
+            "api",
+            "platform",
+            "agent",
+            "studio",
+            "endpoint",
+        )
+    ):
         return default
     if any(token in corpus for token in ("guide", "how enterprises", "how ", "builds ai-native")):
         return "unknown_ai_event"

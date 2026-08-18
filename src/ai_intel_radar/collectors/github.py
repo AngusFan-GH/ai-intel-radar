@@ -59,7 +59,7 @@ class GitHubSearchCollector(Collector):
                 "q": source.query,
                 "sort": "updated",
                 "order": "desc",
-                "per_page": "10",
+                "per_page": str(source.limit),
             },
         )
         items = payload.get("items", []) if isinstance(payload, dict) else []
@@ -76,10 +76,10 @@ class GitHubSearchCollector(Collector):
                     source_type=source.type,
                     discovered_at=datetime.now(timezone.utc),
                     published_at=_parse_datetime(item.get("updated_at")),
-                    vendor_name=item["owner"]["login"],
-                    entity_type="unknown",
+                    vendor_name=source.vendor_name or item["owner"]["login"],
+                    entity_type=source.entity_type if source.vendor_name else "unknown",
                     event_type=source.event_type,
-                    region="unknown",
+                    region=source.region if source.vendor_name else "unknown",
                     is_open_source=True,
                     github_repo=full_name,
                     github_stars=item.get("stargazers_count"),

@@ -24,6 +24,31 @@ priority = "P0"
 type = "rss"
 url = "https://www.anthropic.com/news/rss.xml"
 event_type = "product_launch"
+limit = 8
+
+[[vendor]]
+name = "Cohere"
+region = "global"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://cohere.com/blog/rss.xml"
+event_type = "product_launch"
+limit = 8
+
+[[vendor]]
+name = "AI21"
+region = "global"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.ai21.com/blog/rss.xml"
+event_type = "product_launch"
+limit = 8
 
 [[vendor]]
 name = "Google DeepMind"
@@ -35,6 +60,19 @@ priority = "P0"
 type = "rss"
 url = "https://deepmind.google/discover/blog/rss.xml"
 event_type = "model_launch"
+limit = 8
+
+[[vendor]]
+name = "NVIDIA AI"
+region = "global"
+entity_type = "big_tech"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://blogs.nvidia.com/feed/"
+event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Meta AI"
@@ -46,6 +84,7 @@ priority = "P0"
 type = "rss"
 url = "https://ai.meta.com/blog/rss/"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Mistral AI"
@@ -57,11 +96,25 @@ priority = "P0"
 type = "rss"
 url = "https://mistral.ai/news/rss.xml"
 event_type = "model_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "mistralai"
 event_type = "model_launch"
+limit = 8
+
+[[vendor]]
+name = "Together AI"
+region = "global"
+entity_type = "startup"
+priority = "P1"
+
+[[vendor.source]]
+type = "rss"
+url = "https://www.together.ai/blog/rss.xml"
+event_type = "product_launch"
+limit = 8
 
 [[vendor]]
 name = "Hugging Face"
@@ -73,6 +126,7 @@ priority = "P0"
 type = "rss"
 url = "https://huggingface.co/blog/feed.xml"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Alibaba Cloud"
@@ -84,11 +138,13 @@ priority = "P0"
 type = "github_search"
 query = "org:QwenLM"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "Qwen"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "DeepSeek"
@@ -100,11 +156,20 @@ priority = "P0"
 type = "github_search"
 query = "org:deepseek-ai"
 event_type = "open_source_launch"
+limit = 8
+
+[[vendor.source]]
+type = "html_news"
+url = "https://api-docs.deepseek.com/updates/"
+query = "/news/"
+event_type = "model_launch"
+limit = 4
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "deepseek-ai"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Tencent Hunyuan"
@@ -116,11 +181,20 @@ priority = "P1"
 type = "github_search"
 query = "org:Tencent-Hunyuan"
 event_type = "open_source_launch"
+limit = 8
+
+[[vendor.source]]
+type = "html_news"
+url = "https://www.tencent.com/newsroom/all-news/?type=media"
+query = "hunyuan|混元"
+event_type = "product_launch"
+limit = 4
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "Tencent-Hunyuan"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Zhipu AI"
@@ -129,14 +203,22 @@ entity_type = "startup"
 priority = "P1"
 
 [[vendor.source]]
+type = "rss"
+url = "https://www.zhipuai.cn/rss.xml"
+event_type = "product_launch"
+limit = 8
+
+[[vendor.source]]
 type = "github_search"
 query = "org:ZhipuAI"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "zai-org"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Moonshot AI"
@@ -145,14 +227,22 @@ entity_type = "startup"
 priority = "P1"
 
 [[vendor.source]]
+type = "rss"
+url = "https://www.moonshot.cn/rss.xml"
+event_type = "product_launch"
+limit = 8
+
+[[vendor.source]]
 type = "github_search"
 query = "org:moonshotai"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "moonshotai"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "MiniMax"
@@ -161,14 +251,22 @@ entity_type = "startup"
 priority = "P1"
 
 [[vendor.source]]
+type = "rss"
+url = "https://www.minimaxi.com/rss.xml"
+event_type = "product_launch"
+limit = 8
+
+[[vendor.source]]
 type = "github_search"
 query = "org:MiniMax-AI"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "MiniMaxAI"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "Baichuan"
@@ -180,11 +278,13 @@ priority = "P1"
 type = "github_search"
 query = "org:baichuan-inc"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "baichuan-inc"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "StepFun"
@@ -196,11 +296,13 @@ priority = "P1"
 type = "github_search"
 query = "org:stepfun-ai"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "stepfun-ai"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "ByteDance Seed"
@@ -212,11 +314,20 @@ priority = "P1"
 type = "github_search"
 query = "org:bytedance-seed"
 event_type = "open_source_launch"
+limit = 8
+
+[[vendor.source]]
+type = "html_news"
+url = "https://seed.bytedance.com/en/blog"
+query = "/en/(seed|seedaudio|seedance|seedream|seedrealtime|gr_rl)"
+event_type = "model_launch"
+limit = 6
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "bytedance-research"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "InternLM"
@@ -228,11 +339,13 @@ priority = "P1"
 type = "github_search"
 query = "org:InternLM"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "internlm"
 event_type = "model_launch"
+limit = 8
 
 [[vendor]]
 name = "ModelScope"
@@ -244,32 +357,38 @@ priority = "P1"
 type = "github_search"
 query = "org:modelscope"
 event_type = "open_source_launch"
+limit = 8
 
 [[vendor.source]]
 type = "huggingface_models"
 author = "iic"
 event_type = "model_launch"
+limit = 8
 
 [[discovery_source]]
 type = "github_search"
 name = "github-ai-recent"
-query = "topic:artificial-intelligence created:>2026-08-10 stars:>20"
+query = "topic:artificial-intelligence created:>{{days_ago:7}} stars:>20"
 event_type = "open_source_launch"
+limit = 12
 
 [[discovery_source]]
 type = "github_search"
 name = "github-llm-recent"
-query = "llm OR agent created:>2026-08-10 stars:>15"
+query = "llm OR agent created:>{{days_ago:7}} stars:>15"
 event_type = "open_source_launch"
+limit = 12
 
 [[discovery_source]]
 type = "github_search"
 name = "github-china-ai-orgs"
-query = "Qwen OR DeepSeek OR Hunyuan OR InternLM OR MiniMax OR Moonshot OR Zhipu OR Baichuan pushed:>2026-08-10 stars:>10"
+query = "Qwen OR DeepSeek OR Hunyuan OR InternLM OR MiniMax OR Moonshot OR Zhipu OR Baichuan created:>{{days_ago:14}} stars:>10"
 event_type = "open_source_launch"
+limit = 12
 
 [[discovery_source]]
 type = "huggingface_models"
 name = "hf-recent-models"
 search = "text-generation"
 event_type = "model_launch"
+limit = 12

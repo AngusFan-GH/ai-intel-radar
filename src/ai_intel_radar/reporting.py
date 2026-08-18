@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
@@ -75,9 +76,9 @@ def _build_item(row) -> dict:
         "canonical_vendor": canonical_vendor,
         "display_section": display_section,
         "brief": brief,
-        "what_it_is": _describe_what_it_is(row, payload),
-        "why_it_matters": _describe_why_it_matters(row),
-        "how_to_use": _describe_how_to_use(row, payload),
+        "summary_line": _describe_summary_line(row, payload),
+        "recommend_reason": _describe_recommend_reason(row, payload),
+        "signal_line": _describe_signal_line(row, payload),
         "summary": summary,
         "score": score,
         "score_value": score_value,
@@ -110,7 +111,7 @@ def _prune_grouped(grouped: dict[str, dict[str, list[dict]]]) -> dict[str, list[
 def _render_markdown_report(today: str, section_totals: dict[str, int], grouped: dict[str, list[tuple[str, list[dict]]]]) -> str:
     total = sum(section_totals.values())
     lines = [f"# AI 情报雷达日报（{today}）", ""]
-    lines.append(f"当前展示池累计 {total} 条事件。日报已改成按厂商合并展示，并补充“这是什么 / 为什么值得看 / 怎么用”。")
+    lines.append(f"当前展示池累计 {total} 条事件。日报已改成按厂商合并展示，并补充“摘要 / 推荐理由 / 关键信号”，帮助快速判断什么值得继续点开。")
     lines.append("")
     lines.append(
         "数据概况："
@@ -138,11 +139,11 @@ def _render_markdown_report(today: str, section_totals: dict[str, int], grouped:
 def _render_markdown_item(item: dict) -> list[str]:
     lines = [f"- [{item['title']}]({item['url']})"]
     lines.append(f"  - 中文说明：{item['brief']}")
-    lines.append(f"  - 这是什么：{item['what_it_is']}")
-    if item["why_it_matters"]:
-        lines.append(f"  - 为什么值得看：{item['why_it_matters']}")
-    if item["how_to_use"]:
-        lines.append(f"  - 怎么用：{item['how_to_use']}")
+    lines.append(f"  - 摘要：{item['summary_line']}")
+    if item["recommend_reason"]:
+        lines.append(f"  - 推荐理由：{item['recommend_reason']}")
+    if item["signal_line"]:
+        lines.append(f"  - 关键信号：{item['signal_line']}")
     if item["summary"]:
         lines.append(f"  - 原文摘要：{item['summary']}")
     return lines
@@ -269,7 +270,7 @@ def _render_html_report(
       <section class="hero">
         <p class="eyebrow">AI Intel Radar</p>
         <h1>AI 情报雷达日报</h1>
-        <p>{html.escape(today)} · 当前展示池累计 {total} 条事件。日报已按厂商合并展示，并为每条消息补充“这是什么 / 为什么值得看 / 怎么用”，帮助读者快速理解消息本身。</p>
+        <p>{html.escape(today)} · 当前展示池累计 {total} 条事件。日报已按厂商合并展示，并为每条消息补充“摘要 / 推荐理由 / 关键信号”，帮助读者快速判断是否值得继续跟进。</p>
         <div class="hero-actions">
           <a class="hero-link primary" href="{html.escape(primary_href)}">打开本日报 HTML</a>
           <a class="hero-link" href="{html.escape(home_href)}">返回最新首页</a>
@@ -326,9 +327,9 @@ def _render_html_event_item(item: dict) -> str:
         <span class="pill">{html.escape(item["source_label"])}</span>
         {tags_html}
       </div>
-      <p class="blurb"><span class="label">这是什么：</span>{html.escape(item["what_it_is"])}</p>
-      <p class="blurb"><span class="label">为什么值得看：</span>{html.escape(item["why_it_matters"] or "当前主要是厂商/项目动态，建议结合原链接查看详情。")}</p>
-      <p class="blurb"><span class="label">怎么用：</span>{html.escape(item["how_to_use"])}</p>
+      <p class="blurb"><span class="label">摘要：</span>{html.escape(item["summary_line"])}</p>
+      <p class="blurb"><span class="label">推荐理由：</span>{html.escape(item["recommend_reason"] or "当前主要作为一条动态信号，建议结合原链接确认细节。")}</p>
+      <p class="blurb"><span class="label">关键信号：</span>{html.escape(item["signal_line"])}</p>
       {summary_html}
       <div class="actions">
         <a class="link" href="{html.escape(item["url"])}" target="_blank" rel="noreferrer">查看原链接</a>
@@ -470,73 +471,96 @@ def _parse_payload(raw_payload: str | None) -> dict:
     return payload if isinstance(payload, dict) else {}
 
 
-def _describe_what_it_is(row, payload: dict) -> str:
+def _describe_summary_line(row, payload: dict) -> str:
     corpus = f"{row['title']} {row['summary'] or ''}".lower()
     if row["source_type"] == "github_search":
         description = payload.get("description") or row["summary"] or ""
         repo = row["github_repo"] or payload.get("full_name") or row["title"]
-        return f"`{repo}` 是一个{_infer_project_kind(corpus)}。当前公开描述是：{_trim_sentence(description or '暂无更详细描述。', 130)}"
+        return f"`{repo}` 最近进入 GitHub 高活跃区间，属于{_infer_project_kind(corpus)}。{_trim_sentence(description or '当前公开描述较少。', 120)}"
     if row["source_type"] == "github_releases":
         repo = row["github_repo"] or row["title"]
-        return f"这是 `{repo}` 的新版本发布，表示这个 SDK 或开源项目最近发布了新的可安装版本。"
+        return f"`{repo}` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。"
     if row["source_type"] == "huggingface_models":
         model_name = row["title"].replace(" updated", "")
-        return f"`{model_name}` 是近期更新的模型条目，通常意味着模型权重、模型卡或可用性发生了变化。"
+        metrics = _parse_hf_metrics(row["summary"] or "")
+        metric_text = []
+        if metrics.get("downloads"):
+            metric_text.append(f"下载量约 {metrics['downloads']}")
+        if metrics.get("likes"):
+            metric_text.append(f"点赞约 {metrics['likes']}")
+        suffix = f" 当前可见{'，'.join(metric_text)}。" if metric_text else ""
+        return f"`{model_name}` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。{suffix}"
+    if row["source_type"] == "html_news":
+        return _trim_sentence(row["summary"] or row["title"], 140)
     if row["source_type"] == "rss":
         return _describe_rss_item(row["title"], row["summary"] or "")
     return _trim_sentence(row["summary"] or row["title"], 130)
 
 
-def _describe_why_it_matters(row) -> str:
+def _describe_recommend_reason(row, payload: dict) -> str:
     reasons: list[str] = []
-    if row["github_stars"]:
-        reasons.append(f"当前记录到约 {row['github_stars']} 个 GitHub stars")
+    if row["source_type"] in {"rss", "html_news"}:
+        reasons.append("来自官方发布面，可信度比二手转述更高")
     if row["source_type"] == "github_search":
-        reasons.append("近期在 GitHub 发现流中活跃，说明关注度或增长较高")
-    if row["source_type"] == "rss":
-        reasons.append("来自官方发布源，可信度较高")
+        stars = row["github_stars"] or 0
+        if stars >= 5000:
+            reasons.append(f"当前 GitHub stars 约 {stars}，已不是早期小项目")
+        elif stars >= 500:
+            reasons.append(f"当前 GitHub stars 约 {stars}，说明已经形成一定关注度")
+        reasons.append("近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度")
     if row["source_type"] == "huggingface_models":
-        reasons.append("属于模型分发平台上的更新，适合关注模型能力和生态反馈")
+        metrics = _parse_hf_metrics(row["summary"] or "")
+        if metrics.get("downloads"):
+            reasons.append(f"模型分发页显示下载量约 {metrics['downloads']}")
+        if metrics.get("likes"):
+            reasons.append(f"社区点赞约 {metrics['likes']}")
+        reasons.append("这是模型层面的直接更新信号，不是二手媒体转述")
+    if row["source_type"] == "github_releases":
+        reasons.append("release 代表项目维护者已经给出明确版本边界，信号强于普通提交")
     published = row["published_at"] or row["discovered_at"]
     if published:
         try:
             dt = datetime.fromisoformat(published)
             age_hours = max((datetime.now(UTC) - dt).total_seconds() / 3600, 0)
             if age_hours <= 24:
-                reasons.append("属于近 24 小时内的新鲜事件")
+                reasons.append("属于近 24 小时内的新鲜动态")
         except ValueError:
             pass
+    if not reasons and row["summary"]:
+        reasons.append("这条动态本身信息密度较高，适合继续点开确认范围、发布时间和具体变更。")
     return "；".join(reasons)
 
 
-def _describe_how_to_use(row, payload: dict) -> str:
+def _describe_signal_line(row, payload: dict) -> str:
     corpus = f"{row['title']} {row['summary'] or ''}".lower()
     if row["source_type"] == "github_search":
-        repo = row["github_repo"] or payload.get("full_name") or "该项目"
-        if any(token in corpus for token in ("plugin", "plugins", "harness")):
-            return f"优先阅读 `{repo}` 的 README 与安装说明，把它作为插件或扩展接入现有 agent / harness 环境。"
-        if any(token in corpus for token in ("benchmark", "eval", "evaluation")):
-            return f"把 `{repo}` 当作评测工具使用，准备待测模型或 agent，然后按仓库脚本运行 benchmark。"
-        if any(token in corpus for token in ("speech", "asr", "audio", "voice")):
-            return f"把 `{repo}` 用作语音能力组件，常见用法是本地推理、批量转写，或包装成服务接口。"
-        if any(token in corpus for token in ("agent", "coding", "terminal", "code")):
-            return f"开发者可以先 clone `{repo}`，按 README 安装依赖，然后在本地终端或开发流程中试用。"
-        if any(token in corpus for token in ("model", "weights", "checkpoint")):
-            return f"通常需要先获取模型权重，再配合官方脚本、Transformers、vLLM 等框架推理或部署。"
-        return f"建议先查看 `{repo}` 的 README、示例和安装命令，先确认它是库、应用还是评测工具，再决定接入方式。"
+        project_kind = _infer_project_kind(corpus)
+        stars = row["github_stars"] or 0
+        return f"开源类型：{project_kind}；GitHub stars：{stars or '未记录'}；信号来源：GitHub 发现流。"
     if row["source_type"] == "github_releases":
-        return "如果你已经在用这个 SDK 或项目，优先查看 release notes 和升级说明，再决定是否更新依赖版本。"
+        return "信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。"
     if row["source_type"] == "huggingface_models":
-        return "通常在 Hugging Face 页面查看模型卡、许可证和示例代码，再决定是直接推理、微调还是部署服务。"
+        metrics = _parse_hf_metrics(row["summary"] or "")
+        tags = _extract_hf_tags(row["summary"] or "")
+        details = []
+        if tags:
+            details.append(f"标签：{tags}")
+        if metrics.get("downloads"):
+            details.append(f"下载量：{metrics['downloads']}")
+        if metrics.get("likes"):
+            details.append(f"点赞：{metrics['likes']}")
+        details.append("信号来源：Hugging Face 模型页")
+        return "；".join(details)
+    if row["source_type"] == "html_news":
+        category = "模型/能力更新" if any(token in corpus for token in ("model", "reasoning", "multimodal", "audio")) else "官网动态"
+        return f"信号来源：厂商官网页面；动态类型：{category}。"
     if row["source_type"] == "rss":
-        if "aws" in corpus or "bedrock" in corpus:
-            return "如果你在 AWS 体系内，可以优先通过 Bedrock 或相关官方接入路径启用，而不是自行部署。"
         if "api" in corpus or "service tier" in corpus:
-            return "这类内容通常通过官方 API、控制台或服务配置启用，适合先看定价、限额和接入文档。"
-        if any(token in corpus for token in ("case study", "how ", "customer", "builds", "enterprise")):
-            return "这更像案例或实践参考，适合借鉴落地方式，而不是直接安装使用。"
-        return "优先打开原链接查看官方说明、接入方式和限制条件，再决定是否纳入你的工作流。"
-    return "建议先查看原链接中的官方文档、README 或示例代码，再确认具体接入方式。"
+            return "信号来源：官方 RSS；主题更偏 API / 服务能力。"
+        if any(token in corpus for token in ("case study", "customer", "enterprise")):
+            return "信号来源：官方 RSS；主题更偏案例/采用情况。"
+        return "信号来源：官方 RSS。"
+    return "信号来源：聚合事件。"
 
 
 def _describe_rss_item(title: str, summary: str) -> str:
@@ -552,6 +576,23 @@ def _describe_rss_item(title: str, summary: str) -> str:
     if any(token in corpus for token in ("appoint", "chief revenue officer", "letter", "governor")):
         return "这更偏公司运营或政策沟通，并不是严格意义上的新产品发布。"
     return f"这是官方发布源中的一条更新，核心内容是：{_trim_sentence(summary or title, 120)}"
+
+
+def _parse_hf_metrics(summary: str) -> dict[str, int]:
+    values: dict[str, int] = {}
+    for field in ("downloads", "likes"):
+        match = re.search(rf"{field}=([0-9]+)", summary)
+        if match:
+            values[field] = int(match.group(1))
+    return values
+
+
+def _extract_hf_tags(summary: str) -> str:
+    match = re.search(r"tags=([^;]+)", summary)
+    if not match:
+        return ""
+    tags = [part.strip() for part in match.group(1).split(",") if part.strip()]
+    return " / ".join(tags[:6])
 
 
 def _infer_project_kind(corpus: str) -> str:
@@ -586,6 +627,7 @@ def _source_label(value: str) -> str:
         "github_releases": "GitHub Release",
         "github_search": "GitHub 发现流",
         "huggingface_models": "Hugging Face 模型流",
+        "html_news": "官方网页抓取",
     }
     return mapping.get(value, value)
 

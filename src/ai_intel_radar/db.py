@@ -58,6 +58,7 @@ def bootstrap_schema(db_path: Path | None = None) -> None:
                 author TEXT,
                 query_text TEXT,
                 name TEXT,
+                limit_count INTEGER NOT NULL DEFAULT 10,
                 updated_at TEXT NOT NULL
             );
 
@@ -83,6 +84,7 @@ def bootstrap_schema(db_path: Path | None = None) -> None:
             );
             """
         )
+        _ensure_column(connection, "sources", "limit_count", "INTEGER NOT NULL DEFAULT 10")
         connection.commit()
 
 
@@ -115,13 +117,14 @@ def _upsert_source(connection: sqlite3.Connection, source: Source, now: str) -> 
     source_key = _source_key(source)
     connection.execute(
         """
-        INSERT INTO sources(source_key, vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO sources(source_key, vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name, limit_count, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(source_key)
         DO UPDATE SET
             event_type = excluded.event_type,
             region = excluded.region,
             entity_type = excluded.entity_type,
+            limit_count = excluded.limit_count,
             updated_at = excluded.updated_at
         """,
         (
@@ -136,6 +139,7 @@ def _upsert_source(connection: sqlite3.Connection, source: Source, now: str) -> 
             source.author,
             source.query,
             source.name,
+            source.limit,
             now,
         ),
     )
@@ -145,12 +149,12 @@ def load_sources(source_type: str | None = None, db_path: Path | None = None) ->
     with get_connection(db_path) as connection:
         if source_type:
             rows = connection.execute(
-                "SELECT vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name FROM sources WHERE type = ?",
+                "SELECT vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name, limit_count FROM sources WHERE type = ?",
                 (source_type,),
             ).fetchall()
         else:
             rows = connection.execute(
-                "SELECT vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name FROM sources"
+                "SELECT vendor_name, type, event_type, region, entity_type, url, repo, author, query_text, name, limit_count FROM sources"
             ).fetchall()
     return [
         Source(
@@ -164,6 +168,7 @@ def load_sources(source_type: str | None = None, db_path: Path | None = None) ->
             author=row["author"],
             query=row["query_text"],
             name=row["name"],
+            limit=row["limit_count"],
         )
         for row in rows
     ]
@@ -269,3 +274,10 @@ def _source_key(source: Source) -> str:
         ]
     )
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _ensure_column(connection: sqlite3.Connection, table: str, column: str, ddl: str) -> None:
+    rows = connection.execute(f"PRAGMA table_info({table})").fetchall()
+    if any(row["name"] == column for row in rows):
+        return
+    connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")

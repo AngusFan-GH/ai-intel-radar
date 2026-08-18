@@ -21,7 +21,7 @@ def main() -> None:
     collect_parser = subparsers.add_parser("collect")
     collect_parser.add_argument(
         "--collector",
-        choices=["rss", "github_releases", "github_search", "huggingface_models", "all"],
+        choices=["rss", "github_releases", "github_search", "huggingface_models", "html_news", "all"],
         default="all",
     )
 
@@ -86,3 +86,7 @@ def main() -> None:
             f"scored={len(scored)} report={report_path}"
         )
         return
+
+
+if __name__ == "__main__":
+    main()

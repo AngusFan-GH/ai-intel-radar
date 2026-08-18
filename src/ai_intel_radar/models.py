@@ -16,6 +16,7 @@ class Source:
     author: str | None = None
     query: str | None = None
     name: str | None = None
+    limit: int = 10
 
 
 @dataclass(slots=True)

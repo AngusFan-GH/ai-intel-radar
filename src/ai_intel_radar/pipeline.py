@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 
 from .collectors.github import GitHubReleasesCollector, GitHubSearchCollector
+from .collectors.html_news import HTMLNewsCollector
 from .collectors.huggingface import HuggingFaceModelsCollector
 from .collectors.rss import RSSCollector
 from .db import load_sources, save_events
@@ -16,6 +17,7 @@ COLLECTORS = {
     "github_releases": GitHubReleasesCollector(),
     "github_search": GitHubSearchCollector(),
     "huggingface_models": HuggingFaceModelsCollector(),
+    "html_news": HTMLNewsCollector(),
 }
 
 

@@ -5,6 +5,9 @@ from datetime import datetime, timezone
 
 def score_event(row: dict) -> float:
     score = 0.0
+    title = row["title"] if "title" in row.keys() else ""
+    summary = row["summary"] if "summary" in row.keys() and row["summary"] else ""
+    corpus = f"{title} {summary}".lower()
 
     if row["source_type"] in {"rss", "github_releases", "huggingface_models"}:
         score += 25
@@ -19,6 +22,11 @@ def score_event(row: dict) -> float:
 
     if row["is_open_source"]:
         score += 12
+
+    if row["event_type"] == "unknown_ai_event":
+        score -= 12
+    if any(token in corpus for token in ("appoint", "case study", "customer story", "survey", "report", "chief revenue officer")):
+        score -= 10
 
     stars = row["github_stars"] or 0
     score += min(stars / 20, 20)
