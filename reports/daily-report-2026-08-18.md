@@ -230,14 +230,14 @@
 - [InternLM/WildClawBench is trending](https://github.com/InternLM/WildClawBench)
   - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：73.18；标签：Agent。
   - 摘要：`InternLM/WildClawBench` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An in-the-wild benchmark for AI agents in the OpenClaw Environment.
-  - 推荐理由：当前 GitHub stars 约 513，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 推荐理由：当前 GitHub stars 约 513，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度
   - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：513；信号来源：GitHub 发现流。
   - 原文摘要：An in-the-wild benchmark for AI agents in the OpenClaw Environment.
 
 - [InternLM/xtuner is trending](https://github.com/InternLM/xtuner)
   - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：73.10；标签：未打标签。
   - 摘要：`InternLM/xtuner` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。A Next-Generation Training Engine Built for Ultra-Large MoE Models
-  - 推荐理由：当前 GitHub stars 约 5180，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 推荐理由：当前 GitHub stars 约 5180，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度
   - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：5180；信号来源：GitHub 发现流。
   - 原文摘要：A Next-Generation Training Engine Built for Ultra-Large MoE Models
 

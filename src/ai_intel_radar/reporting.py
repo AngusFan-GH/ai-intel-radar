@@ -246,23 +246,65 @@ def _render_html_report(
       .section-header {{ display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }}
       .section-title {{ margin: 0; font-family: "Space Grotesk", "Noto Sans SC", sans-serif; font-size: 30px; letter-spacing: -0.03em; }}
       .section-meta {{ color: var(--muted); font-size: 13px; }}
-      .vendor-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
-      .vendor-card {{ background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }}
-      .vendor-head {{ display: flex; justify-content: space-between; gap: 12px; margin-bottom: 14px; }}
+      .vendor-grid {{ display: grid; grid-template-columns: 1fr; gap: 18px; }}
+      .vendor-card {{ background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 22px; }}
+      .vendor-head {{ display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }}
       .vendor-name {{ margin: 0; font-size: 22px; line-height: 1.2; }}
       .vendor-count {{ color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 8px 12px; font-weight: 700; white-space: nowrap; height: fit-content; }}
       .event-list {{ display: grid; gap: 14px; }}
       .event-item {{ border-top: 1px solid var(--line); padding-top: 14px; }}
       .event-item:first-child {{ border-top: none; padding-top: 0; }}
+      .event-shell {{
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.7fr);
+        gap: 18px;
+        align-items: start;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.58);
+        border: 1px solid rgba(38, 33, 26, 0.08);
+      }}
+      .event-main {{ min-width: 0; }}
+      .event-side {{
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        padding-left: 14px;
+        border-left: 1px solid var(--line);
+      }}
       .event-title {{ margin: 0; font-size: 18px; line-height: 1.4; }}
       .meta {{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }}
       .pill {{ display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.64); padding: 6px 10px; color: var(--muted); font-size: 12px; }}
       .blurb {{ margin: 10px 0 0; color: var(--muted); line-height: 1.72; font-size: 14px; }}
       .label {{ color: var(--ink); font-weight: 700; }}
-      .actions {{ display: flex; justify-content: flex-end; margin-top: 12px; }}
-      .link {{ text-decoration: none; font-weight: 700; color: var(--accent); }}
+      .signal-box {{
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        padding: 12px 14px;
+      }}
+      .signal-kicker {{ margin: 0 0 6px; color: var(--muted); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }}
+      .signal-text {{ margin: 0; color: var(--ink); font-size: 13px; line-height: 1.65; }}
+      .actions {{ display: flex; justify-content: flex-start; margin-top: 4px; }}
+      .link {{
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,87,255,0.16);
+        background: rgba(220,231,255,0.56);
+      }}
       .footer {{ margin-top: 24px; color: var(--muted); font-size: 12px; }}
-      @media (max-width: 960px) {{ .stats, .vendor-grid {{ grid-template-columns: 1fr; }} .vendor-head {{ flex-direction: column; }} }}
+      @media (max-width: 1100px) {{
+        .event-shell {{ grid-template-columns: 1fr; }}
+        .event-side {{ border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 12px; }}
+      }}
+      @media (max-width: 960px) {{ .stats, .vendor-grid {{ grid-template-columns: 1fr; }} .vendor-head {{ flex-direction: column; align-items: flex-start; }} }}
     </style>
   </head>
   <body>
@@ -320,19 +362,28 @@ def _render_html_event_item(item: dict) -> str:
     )
     return f"""
     <div class="event-item">
-      <h4 class="event-title">{html.escape(item["title"])}</h4>
-      <div class="meta">
-        <span class="pill">{html.escape(item["event_label"])}</span>
-        <span class="pill">Score {html.escape(item["score"])}</span>
-        <span class="pill">{html.escape(item["source_label"])}</span>
-        {tags_html}
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>{html.escape(item["summary_line"])}</p>
-      <p class="blurb"><span class="label">推荐理由：</span>{html.escape(item["recommend_reason"] or "当前主要作为一条动态信号，建议结合原链接确认细节。")}</p>
-      <p class="blurb"><span class="label">关键信号：</span>{html.escape(item["signal_line"])}</p>
-      {summary_html}
-      <div class="actions">
-        <a class="link" href="{html.escape(item["url"])}" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">{html.escape(item["title"])}</h4>
+          <div class="meta">
+            <span class="pill">{html.escape(item["event_label"])}</span>
+            <span class="pill">Score {html.escape(item["score"])}</span>
+            <span class="pill">{html.escape(item["source_label"])}</span>
+            {tags_html}
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>{html.escape(item["summary_line"])}</p>
+          <p class="blurb"><span class="label">推荐理由：</span>{html.escape(item["recommend_reason"] or "当前主要作为一条动态信号，建议结合原链接确认细节。")}</p>
+          {summary_html}
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">{html.escape(item["signal_line"])}</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="{html.escape(item["url"])}" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     """

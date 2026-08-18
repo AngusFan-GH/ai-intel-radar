@@ -67,23 +67,65 @@
       .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
       .section-title { margin: 0; font-family: "Space Grotesk", "Noto Sans SC", sans-serif; font-size: 30px; letter-spacing: -0.03em; }
       .section-meta { color: var(--muted); font-size: 13px; }
-      .vendor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-      .vendor-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
-      .vendor-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+      .vendor-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+      .vendor-card { background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 22px; }
+      .vendor-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
       .vendor-name { margin: 0; font-size: 22px; line-height: 1.2; }
       .vendor-count { color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 8px 12px; font-weight: 700; white-space: nowrap; height: fit-content; }
       .event-list { display: grid; gap: 14px; }
       .event-item { border-top: 1px solid var(--line); padding-top: 14px; }
       .event-item:first-child { border-top: none; padding-top: 0; }
+      .event-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.7fr);
+        gap: 18px;
+        align-items: start;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.58);
+        border: 1px solid rgba(38, 33, 26, 0.08);
+      }
+      .event-main { min-width: 0; }
+      .event-side {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        padding-left: 14px;
+        border-left: 1px solid var(--line);
+      }
       .event-title { margin: 0; font-size: 18px; line-height: 1.4; }
       .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
       .pill { display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.64); padding: 6px 10px; color: var(--muted); font-size: 12px; }
       .blurb { margin: 10px 0 0; color: var(--muted); line-height: 1.72; font-size: 14px; }
       .label { color: var(--ink); font-weight: 700; }
-      .actions { display: flex; justify-content: flex-end; margin-top: 12px; }
-      .link { text-decoration: none; font-weight: 700; color: var(--accent); }
+      .signal-box {
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        padding: 12px 14px;
+      }
+      .signal-kicker { margin: 0 0 6px; color: var(--muted); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+      .signal-text { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.65; }
+      .actions { display: flex; justify-content: flex-start; margin-top: 4px; }
+      .link {
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,87,255,0.16);
+        background: rgba(220,231,255,0.56);
+      }
       .footer { margin-top: 24px; color: var(--muted); font-size: 12px; }
-      @media (max-width: 960px) { .stats, .vendor-grid { grid-template-columns: 1fr; } .vendor-head { flex-direction: column; } }
+      @media (max-width: 1100px) {
+        .event-shell { grid-template-columns: 1fr; }
+        .event-side { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 12px; }
+      }
+      @media (max-width: 960px) { .stats, .vendor-grid { grid-template-columns: 1fr; } .vendor-head { flex-direction: column; align-items: flex-start; } }
     </style>
   </head>
   <body>
@@ -132,37 +174,55 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed</h4>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">Score 52.41</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS；主题更偏 API / 服务能力。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Preview Ultrafast, a new OpenAI API service tier that runs GPT-5.6 Sol up to 14× faster. Powered by Cerebras, it delivers up to 750 output tokens per second.</p>
-      <div class="actions">
-        <a class="link" href="https://openai.com/index/previewing-ultrafast" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed</h4>
+          <div class="meta">
+            <span class="pill">产品发布</span>
+            <span class="pill">Score 52.41</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Preview Ultrafast, a new OpenAI API service tier that runs GPT-5.6 Sol up to 14× faster. Powered by Cerebras, it delivers up to 750 output tokens per second.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS；主题更偏 API / 服务能力。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://openai.com/index/previewing-ultrafast" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">Testing ads in ChatGPT</h4>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">Score 51.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是面向终端产品体验的变更，重点不是模型本身，而是 ChatGPT 的产品形态和商业化策略。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control.</p>
-      <div class="actions">
-        <a class="link" href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Testing ads in ChatGPT</h4>
+          <div class="meta">
+            <span class="pill">产品发布</span>
+            <span class="pill">Score 51.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是面向终端产品体验的变更，重点不是模型本身，而是 ChatGPT 的产品形态和商业化策略。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -176,19 +236,28 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">ThunderAgent: 2x Faster Agentic Inference for Synthetic Data Generation at Scale</h4>
-      <div class="meta">
-        <span class="pill">产品发布</span>
-        <span class="pill">Score 51.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">Agent</span><span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable progr…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable program, it eliminates KV cache thrashing to deliver more than 2x…</p>
-      <div class="actions">
-        <a class="link" href="https://www.together.ai/blog/thunderagent" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">ThunderAgent: 2x Faster Agentic Inference for Synthetic Data Generation at Scale</h4>
+          <div class="meta">
+            <span class="pill">产品发布</span>
+            <span class="pill">Score 51.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">Agent</span><span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable progr…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable program, it eliminates KV cache thrashing to deliver more than 2x…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://www.together.ai/blog/thunderagent" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -210,55 +279,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Qwen/Qwen3.8-27B updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 91.24</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">conversational</span><span class="pill">deploy:azure</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:apache-2.0</span><span class="pill">qwen3_5</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-27B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 415039，点赞约 10723。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 415039；社区点赞约 10723；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / qwen3_5 / image-text-to-text / conversational / license:apache-2.0；下载量：415039；点赞：10723；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5, image-text-to-text, conversational, license:apache-2.0; downloads=415039; likes=10723</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-27B" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">Qwen/Qwen3.8-27B-FP8 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 91.20</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">base_model:Qwen/Qwen3.8-27B</span><span class="pill">base_model:quantized:Qwen/Qwen3.8-27B</span><span class="pill">conversational</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:apache-2.0</span><span class="pill">qwen3_5</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-27B-FP8` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 495646，点赞约 531。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 495646；社区点赞约 531；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / qwen3_5 / image-text-to-text / conversational / base_model:Qwen/Qwen3.8-27B；下载量：495646；点赞：531；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5, image-text-to-text, conversational, base_model:Qwen/Qwen3.8-27B; downloads=495646; likes=531</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Qwen/Qwen3.8-27B updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 91.24</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">conversational</span><span class="pill">deploy:azure</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:apache-2.0</span><span class="pill">qwen3_5</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-27B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 415039，点赞约 10723。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 415039；社区点赞约 10723；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5, image-text-to-text, conversational, license:apache-2.0; downloads=415039; likes=10723</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / qwen3_5 / image-text-to-text / conversational / license:apache-2.0；下载量：415039；点赞：10723；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-27B" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">Qwen/Qwen3.8-2.4T-A95B updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">conversational</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">license:other</span><span class="pill">qwen3_5_moe_text</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Qwen/Qwen3.8-27B-FP8 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 91.20</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">base_model:Qwen/Qwen3.8-27B</span><span class="pill">base_model:quantized:Qwen/Qwen3.8-27B</span><span class="pill">conversational</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:apache-2.0</span><span class="pill">qwen3_5</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-27B-FP8` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 495646，点赞约 531。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 495646；社区点赞约 531；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5, image-text-to-text, conversational, base_model:Qwen/Qwen3.8-27B; downloads=495646; likes=531</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / qwen3_5 / image-text-to-text / conversational / base_model:Qwen/Qwen3.8-27B；下载量：495646；点赞：531；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-2.4T-A95B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 9465，点赞约 1041。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 9465；社区点赞约 1041；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / qwen3_5_moe_text / text-generation / conversational / license:other；下载量：9465；点赞：1041；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5_moe_text, text-generation, conversational, license:other; downloads=9465; likes=1041</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Qwen/Qwen3.8-2.4T-A95B updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">conversational</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">license:other</span><span class="pill">qwen3_5_moe_text</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Qwen/Qwen3.8-2.4T-A95B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 9465，点赞约 1041。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 9465；社区点赞约 1041；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, qwen3_5_moe_text, text-generation, conversational, license:other; downloads=9465; likes=1041</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / qwen3_5_moe_text / text-generation / conversational / license:other；下载量：9465；点赞：1041；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -272,55 +368,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">MiniMaxAI/MiniMax-Music3 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 90.55</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">diffusers</span><span class="pill">minimax_music3</span><span class="pill">music-generation</span><span class="pill">pytorch</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">sglang-omni</span><span class="pill">text-to-audio</span><span class="pill">text-to-music</span><span class="pill">语音</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-Music3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 10375，点赞约 906。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 10375；社区点赞约 906；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：diffusers / safetensors / minimax_music3 / music-generation / text-to-music / pytorch；下载量：10375；点赞：906；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=diffusers, safetensors, minimax_music3, music-generation, text-to-music, pytorch; downloads=10375; likes=906</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-Music3" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">MiniMaxAI/MiniMax-H3 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.04</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">audio-to-audio-video</span><span class="pill">audio-video-generation</span><span class="pill">diffusers</span><span class="pill">图像</span><span class="pill">image-text-to-audio-video</span><span class="pill">image-text-to-video</span><span class="pill">image-to-audio-video</span><span class="pill">image-to-video</span><span class="pill">license:other</span><span class="pill">minimax-h3</span><span class="pill">多模态</span><span class="pill">reference-to-audio-video</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">synchronized-audio-video</span><span class="pill">text-to-audio-video</span><span class="pill">text-to-video</span><span class="pill">视频</span><span class="pill">video-to-audio-video</span><span class="pill">video-to-video</span><span class="pill">语音</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-H3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2403238，点赞约 4088。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2403238；社区点赞约 4088；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：minimax-h3 / diffusers / safetensors / text-to-video / image-to-video / image-text-to-video；下载量：2403238；点赞：4088；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=minimax-h3, diffusers, safetensors, text-to-video, image-to-video, image-text-to-video; downloads=2403238; likes=4088</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-H3" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMaxAI/MiniMax-Music3 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 90.55</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">diffusers</span><span class="pill">minimax_music3</span><span class="pill">music-generation</span><span class="pill">pytorch</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">sglang-omni</span><span class="pill">text-to-audio</span><span class="pill">text-to-music</span><span class="pill">语音</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-Music3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 10375，点赞约 906。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 10375；社区点赞约 906；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=diffusers, safetensors, minimax_music3, music-generation, text-to-music, pytorch; downloads=10375; likes=906</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：diffusers / safetensors / minimax_music3 / music-generation / text-to-music / pytorch；下载量：10375；点赞：906；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-Music3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">MiniMaxAI/MiniMax-M3 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">Agent</span><span class="pill">arxiv:2606.13392</span><span class="pill">编程</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:other</span><span class="pill">minimax_m3_vl</span><span class="pill">moe</span><span class="pill">多模态</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span><span class="pill">视频</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMaxAI/MiniMax-H3 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.04</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">audio-to-audio-video</span><span class="pill">audio-video-generation</span><span class="pill">diffusers</span><span class="pill">图像</span><span class="pill">image-text-to-audio-video</span><span class="pill">image-text-to-video</span><span class="pill">image-to-audio-video</span><span class="pill">image-to-video</span><span class="pill">license:other</span><span class="pill">minimax-h3</span><span class="pill">多模态</span><span class="pill">reference-to-audio-video</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">synchronized-audio-video</span><span class="pill">text-to-audio-video</span><span class="pill">text-to-video</span><span class="pill">视频</span><span class="pill">video-to-audio-video</span><span class="pill">video-to-video</span><span class="pill">语音</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-H3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2403238，点赞约 4088。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2403238；社区点赞约 4088；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=minimax-h3, diffusers, safetensors, text-to-video, image-to-video, image-text-to-video; downloads=2403238; likes=4088</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：minimax-h3 / diffusers / safetensors / text-to-video / image-to-video / image-text-to-video；下载量：2403238；点赞：4088；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-H3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-M3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 169688，点赞约 1474。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 169688；社区点赞约 1474；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / minimax_m3_vl / image-text-to-text / multimodal / moe；下载量：169688；点赞：1474；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, minimax_m3_vl, image-text-to-text, multimodal, moe; downloads=169688; likes=1474</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-M3" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMaxAI/MiniMax-M3 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">Agent</span><span class="pill">arxiv:2606.13392</span><span class="pill">编程</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:other</span><span class="pill">minimax_m3_vl</span><span class="pill">moe</span><span class="pill">多模态</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span><span class="pill">视频</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMaxAI/MiniMax-M3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 169688，点赞约 1474。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 169688；社区点赞约 1474；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, minimax_m3_vl, image-text-to-text, multimodal, moe; downloads=169688; likes=1474</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / minimax_m3_vl / image-text-to-text / multimodal / moe；下载量：169688；点赞：1474；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/MiniMaxAI/MiniMax-M3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -334,55 +457,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">deepseek-ai/DeepSeek-V4-Pro-0813 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 87.49</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">conversational</span><span class="pill">deepseek_v4</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Pro-0813` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 25006，点赞约 574。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 25006；社区点赞约 574；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / deepseek_v4 / text-generation / conversational / arxiv:2606.19348；下载量：25006；点赞：574；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, conversational, arxiv:2606.19348; downloads=25006; likes=574</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">deepseek-ai/DeepSeek-V4-Flash-0731 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">conversational</span><span class="pill">deepseek_v4</span><span class="pill">deploy:azure</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Flash-0731` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1978298，点赞约 3499。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 1978298；社区点赞约 3499；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / deepseek_v4 / text-generation / conversational / arxiv:2606.19348；下载量：1978298；点赞：3499；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, conversational, arxiv:2606.19348; downloads=1978298; likes=3499</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/DeepSeek-V4-Pro-0813 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 87.49</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">conversational</span><span class="pill">deepseek_v4</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Pro-0813` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 25006，点赞约 574。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 25006；社区点赞约 574；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, conversational, arxiv:2606.19348; downloads=25006; likes=574</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / deepseek_v4 / text-generation / conversational / arxiv:2606.19348；下载量：25006；点赞：574；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">deepseek-ai/DeepSeek-V4-Pro-DSpark updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">deepseek_v4</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/DeepSeek-V4-Flash-0731 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">conversational</span><span class="pill">deepseek_v4</span><span class="pill">deploy:azure</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Flash-0731` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1978298，点赞约 3499。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 1978298；社区点赞约 3499；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, conversational, arxiv:2606.19348; downloads=1978298; likes=3499</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / deepseek_v4 / text-generation / conversational / arxiv:2606.19348；下载量：1978298；点赞：3499；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Pro-DSpark` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 20565，点赞约 540。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 20565；社区点赞约 540；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / deepseek_v4 / text-generation / arxiv:2606.19348 / license:mit；下载量：20565；点赞：540；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, arxiv:2606.19348, license:mit; downloads=20565; likes=540</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/DeepSeek-V4-Pro-DSpark updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">8-bit</span><span class="pill">arxiv:2606.19348</span><span class="pill">deepseek_v4</span><span class="pill">endpoints_compatible</span><span class="pill">fp8</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/DeepSeek-V4-Pro-DSpark` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 20565，点赞约 540。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 20565；社区点赞约 540；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, deepseek_v4, text-generation, arxiv:2606.19348, license:mit; downloads=20565; likes=540</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / deepseek_v4 / text-generation / arxiv:2606.19348 / license:mit；下载量：20565；点赞：540；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -396,55 +546,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">zai-org/GLM-5 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">arxiv:2602.15763</span><span class="pill">conversational</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">glm_moe_dsa</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span><span class="pill">zh</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-5` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 122502，点赞约 2121。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 122502；社区点赞约 2121；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / glm_moe_dsa / text-generation / conversational / en；下载量：122502；点赞：2121；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm_moe_dsa, text-generation, conversational, en; downloads=122502; likes=2121</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/zai-org/GLM-5" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">zai-org/GLM-4.1V-9B-Thinking updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">arxiv:2507.01006</span><span class="pill">base_model:finetune:zai-org/GLM-4-9B-0414</span><span class="pill">base_model:zai-org/GLM-4-9B-0414</span><span class="pill">conversational</span><span class="pill">deploy:azure</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">glm4v</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:mit</span><span class="pill">推理</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span><span class="pill">zh</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-4.1V-9B-Thinking` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 351780，点赞约 784。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 351780；社区点赞约 784；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / glm4v / image-text-to-text / reasoning / conversational；下载量：351780；点赞：784；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm4v, image-text-to-text, reasoning, conversational; downloads=351780; likes=784</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">zai-org/GLM-5 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">arxiv:2602.15763</span><span class="pill">conversational</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">glm_moe_dsa</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-5` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 122502，点赞约 2121。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 122502；社区点赞约 2121；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm_moe_dsa, text-generation, conversational, en; downloads=122502; likes=2121</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / glm_moe_dsa / text-generation / conversational / en；下载量：122502；点赞：2121；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/zai-org/GLM-5" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">zai-org/GLM-5.2 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">arxiv:2602.15763</span><span class="pill">arxiv:2603.12201</span><span class="pill">conversational</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">glm_moe_dsa</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span><span class="pill">zh</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">zai-org/GLM-4.1V-9B-Thinking updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">arxiv:2507.01006</span><span class="pill">base_model:finetune:zai-org/GLM-4-9B-0414</span><span class="pill">base_model:zai-org/GLM-4-9B-0414</span><span class="pill">conversational</span><span class="pill">deploy:azure</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">glm4v</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">license:mit</span><span class="pill">推理</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-4.1V-9B-Thinking` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 351780，点赞约 784。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 351780；社区点赞约 784；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm4v, image-text-to-text, reasoning, conversational; downloads=351780; likes=784</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / glm4v / image-text-to-text / reasoning / conversational；下载量：351780；点赞：784；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-5.2` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2714976，点赞约 4995。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2714976；社区点赞约 4995；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / glm_moe_dsa / text-generation / conversational / en；下载量：2714976；点赞：4995；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm_moe_dsa, text-generation, conversational, en; downloads=2714976; likes=4995</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/zai-org/GLM-5.2" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">zai-org/GLM-5.2 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">arxiv:2602.15763</span><span class="pill">arxiv:2603.12201</span><span class="pill">conversational</span><span class="pill">en</span><span class="pill">endpoints_compatible</span><span class="pill">eval-results</span><span class="pill">glm_moe_dsa</span><span class="pill">license:mit</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">text-generation</span><span class="pill">transformers</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`zai-org/GLM-5.2` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2714976，点赞约 4995。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2714976；社区点赞约 4995；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, glm_moe_dsa, text-generation, conversational, en; downloads=2714976; likes=4995</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / glm_moe_dsa / text-generation / conversational / en；下载量：2714976；点赞：4995；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/zai-org/GLM-5.2" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -458,55 +635,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">moonshotai/Kimi-K3 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">8-bit</span><span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k3</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2163953，点赞约 10802。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2163953；社区点赞约 10802；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / kimi_k3 / feature-extraction / compressed-tensors / conversational；下载量：2163953；点赞：10802；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k3, feature-extraction, compressed-tensors, conversational; downloads=2163953; likes=10802</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">moonshotai/Kimi-K2.7-Code updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k25</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K2.7-Code` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 537000，点赞约 1362。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 537000；社区点赞约 1362；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：537000；点赞：1362；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=537000; likes=1362</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">moonshotai/Kimi-K3 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">8-bit</span><span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k3</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 2163953，点赞约 10802。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 2163953；社区点赞约 10802；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k3, feature-extraction, compressed-tensors, conversational; downloads=2163953; likes=10802</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / kimi_k3 / feature-extraction / compressed-tensors / conversational；下载量：2163953；点赞：10802；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">moonshotai/Kimi-K2.6 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">arxiv:2602.02276</span><span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k25</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">moonshotai/Kimi-K2.7-Code updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k25</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K2.7-Code` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 537000，点赞约 1362。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 537000；社区点赞约 1362；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=537000; likes=1362</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：537000；点赞：1362；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K2.6` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 803646，点赞约 1588。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 803646；社区点赞约 1588；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：803646；点赞：1588；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=803646; likes=1588</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/moonshotai/Kimi-K2.6" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">moonshotai/Kimi-K2.6 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">arxiv:2602.02276</span><span class="pill">编程</span><span class="pill">compressed-tensors</span><span class="pill">conversational</span><span class="pill">custom_code</span><span class="pill">eval-results</span><span class="pill">feature-extraction</span><span class="pill">图像</span><span class="pill">image-text-to-text</span><span class="pill">kimi_k25</span><span class="pill">license:other</span><span class="pill">region:us</span><span class="pill">safetensors</span><span class="pill">transformers</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`moonshotai/Kimi-K2.6` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 803646，点赞约 1588。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 803646；社区点赞约 1588；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=803646; likes=1588</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：803646；点赞：1588；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/moonshotai/Kimi-K2.6" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -520,55 +724,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">mistralai/Mistral-Small-4-119B-2603 updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">ar</span><span class="pill">bn</span><span class="pill">de</span><span class="pill">deploy:azure</span><span class="pill">en</span><span class="pill">es</span><span class="pill">eval-results</span><span class="pill">fa</span><span class="pill">fp8</span><span class="pill">fr</span><span class="pill">hi</span><span class="pill">id</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:apache-2.0</span><span class="pill">mistral3</span><span class="pill">ms</span><span class="pill">ne</span><span class="pill">pl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ro</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">sr</span><span class="pill">sv</span><span class="pill">tr</span><span class="pill">uk</span><span class="pill">vLLM</span><span class="pill">vi</span><span class="pill">zh</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`mistralai/Mistral-Small-4-119B-2603` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 104500，点赞约 417。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 104500；社区点赞约 417；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：safetensors / mistral3 / vLLM / en / fr / de；下载量：104500；点赞：417；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=safetensors, mistral3, vLLM, en, fr, de; downloads=104500; likes=417</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/mistralai/Mistral-Small-4-119B-2603" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">mistralai/Mistral-Medium-3.5-128B updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 85.00</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">ar</span><span class="pill">bn</span><span class="pill">de</span><span class="pill">en</span><span class="pill">es</span><span class="pill">eval-results</span><span class="pill">fa</span><span class="pill">fp8</span><span class="pill">fr</span><span class="pill">hi</span><span class="pill">id</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:other</span><span class="pill">mistral3</span><span class="pill">ms</span><span class="pill">ne</span><span class="pill">pl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ro</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">sr</span><span class="pill">sv</span><span class="pill">tr</span><span class="pill">uk</span><span class="pill">vLLM</span><span class="pill">vi</span><span class="pill">zh</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`mistralai/Mistral-Medium-3.5-128B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 91649，点赞约 426。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 91649；社区点赞约 426；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：safetensors / mistral3 / vLLM / en / fr / de；下载量：91649；点赞：426；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=safetensors, mistral3, vLLM, en, fr, de; downloads=91649; likes=426</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/mistralai/Mistral-Medium-3.5-128B" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">mistralai/Mistral-Small-4-119B-2603 updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">ar</span><span class="pill">bn</span><span class="pill">de</span><span class="pill">deploy:azure</span><span class="pill">en</span><span class="pill">es</span><span class="pill">eval-results</span><span class="pill">fa</span><span class="pill">fp8</span><span class="pill">fr</span><span class="pill">hi</span><span class="pill">id</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:apache-2.0</span><span class="pill">mistral3</span><span class="pill">ms</span><span class="pill">ne</span><span class="pill">pl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ro</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">sr</span><span class="pill">sv</span><span class="pill">tr</span><span class="pill">uk</span><span class="pill">vLLM</span><span class="pill">vi</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`mistralai/Mistral-Small-4-119B-2603` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 104500，点赞约 417。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 104500；社区点赞约 417；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=safetensors, mistral3, vLLM, en, fr, de; downloads=104500; likes=417</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：safetensors / mistral3 / vLLM / en / fr / de；下载量：104500；点赞：417；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/mistralai/Mistral-Small-4-119B-2603" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">mistralai/Shieldstral-1.0-3B updated</h4>
-      <div class="meta">
-        <span class="pill">模型发布</span>
-        <span class="pill">Score 77.35</span>
-        <span class="pill">Hugging Face 模型流</span>
-        <span class="pill">ar</span><span class="pill">arxiv:2607.25857</span><span class="pill">base_model:finetune:mistralai/Ministral-3-3B-Base-2512</span><span class="pill">base_model:mistralai/Ministral-3-3B-Base-2512</span><span class="pill">de</span><span class="pill">en</span><span class="pill">es</span><span class="pill">fr</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:apache-2.0</span><span class="pill">mistral-common</span><span class="pill">mistral3</span><span class="pill">nl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">vllm</span><span class="pill">zh</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">mistralai/Mistral-Medium-3.5-128B updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 85.00</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">ar</span><span class="pill">bn</span><span class="pill">de</span><span class="pill">en</span><span class="pill">es</span><span class="pill">eval-results</span><span class="pill">fa</span><span class="pill">fp8</span><span class="pill">fr</span><span class="pill">hi</span><span class="pill">id</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:other</span><span class="pill">mistral3</span><span class="pill">ms</span><span class="pill">ne</span><span class="pill">pl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ro</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">sr</span><span class="pill">sv</span><span class="pill">tr</span><span class="pill">uk</span><span class="pill">vLLM</span><span class="pill">vi</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`mistralai/Mistral-Medium-3.5-128B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 91649，点赞约 426。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 91649；社区点赞约 426；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=safetensors, mistral3, vLLM, en, fr, de; downloads=91649; likes=426</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：safetensors / mistral3 / vLLM / en / fr / de；下载量：91649；点赞：426；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/mistralai/Mistral-Medium-3.5-128B" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`mistralai/Shieldstral-1.0-3B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 14236，点赞约 247。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 14236；社区点赞约 247；这是模型层面的直接更新信号，不是二手媒体转述</p>
-      <p class="blurb"><span class="label">关键信号：</span>标签：vllm / safetensors / mistral3 / mistral-common / en / fr；下载量：14236；点赞：247；信号来源：Hugging Face 模型页</p>
-      <p class="blurb"><span class="label">原文摘要：</span>tags=vllm, safetensors, mistral3, mistral-common, en, fr; downloads=14236; likes=247</p>
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/mistralai/Shieldstral-1.0-3B" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">mistralai/Shieldstral-1.0-3B updated</h4>
+          <div class="meta">
+            <span class="pill">模型发布</span>
+            <span class="pill">Score 77.35</span>
+            <span class="pill">Hugging Face 模型流</span>
+            <span class="pill">ar</span><span class="pill">arxiv:2607.25857</span><span class="pill">base_model:finetune:mistralai/Ministral-3-3B-Base-2512</span><span class="pill">base_model:mistralai/Ministral-3-3B-Base-2512</span><span class="pill">de</span><span class="pill">en</span><span class="pill">es</span><span class="pill">fr</span><span class="pill">it</span><span class="pill">ja</span><span class="pill">ko</span><span class="pill">license:apache-2.0</span><span class="pill">mistral-common</span><span class="pill">mistral3</span><span class="pill">nl</span><span class="pill">pt</span><span class="pill">region:us</span><span class="pill">ru</span><span class="pill">safetensors</span><span class="pill">vllm</span><span class="pill">zh</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`mistralai/Shieldstral-1.0-3B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 14236，点赞约 247。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>模型分发页显示下载量约 14236；社区点赞约 247；这是模型层面的直接更新信号，不是二手媒体转述</p>
+          <p class="blurb"><span class="label">原文摘要：</span>tags=vllm, safetensors, mistral3, mistral-common, en, fr; downloads=14236; likes=247</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">标签：vllm / safetensors / mistral3 / mistral-common / en / fr；下载量：14236；点赞：247；信号来源：Hugging Face 模型页</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/mistralai/Shieldstral-1.0-3B" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -590,55 +821,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">openai/openai-python: v3.2.0</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 79.95</span>
-        <span class="pill">GitHub Release</span>
-        <span class="pill">图像</span><span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>## [3.2.0](https://github.com/openai/openai-python/compare/v3.1.0...v3.2.0) (2026-08-17) ### Features * add Bedrock Runtime endpoint support (SDK-290) ([#3623](https://github.com/…</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.2.0" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">openai/openai-python: v3.1.0</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 68.71</span>
-        <span class="pill">GitHub Release</span>
-        <span class="pill">视频</span><span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>## [3.1.0](https://github.com/openai/openai-python/compare/v3.0.0...v3.1.0) (2026-08-14) ### Features * **api:** add WebSocket stream IDs ([#3612](https://github.com/openai/openai…</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.1.0" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">openai/openai-python: v3.2.0</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 79.95</span>
+            <span class="pill">GitHub Release</span>
+            <span class="pill">图像</span><span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>## [3.2.0](https://github.com/openai/openai-python/compare/v3.1.0...v3.2.0) (2026-08-17) ### Features * add Bedrock Runtime endpoint support (SDK-290) ([#3623](https://github.com/…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.2.0" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">openai/openai-python: v3.0.0</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 61.00</span>
-        <span class="pill">GitHub Release</span>
-        <span class="pill">基础设施</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">openai/openai-python: v3.1.0</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 68.71</span>
+            <span class="pill">GitHub Release</span>
+            <span class="pill">视频</span><span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交</p>
+          <p class="blurb"><span class="label">原文摘要：</span>## [3.1.0](https://github.com/openai/openai-python/compare/v3.0.0...v3.1.0) (2026-08-14) ### Features * **api:** add WebSocket stream IDs ([#3612](https://github.com/openai/openai…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.1.0" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>## [3.0.0](https://github.com/openai/openai-python/compare/v2.54.0...v3.0.0) (2026-08-12) ### ⚠ BREAKING CHANGES * **api:** HTTPX2 is now the default HTTP client, and `httpx` is n…</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.0.0" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">openai/openai-python: v3.0.0</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 61.00</span>
+            <span class="pill">GitHub Release</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>release 代表项目维护者已经给出明确版本边界，信号强于普通提交</p>
+          <p class="blurb"><span class="label">原文摘要：</span>## [3.0.0](https://github.com/openai/openai-python/compare/v2.54.0...v3.0.0) (2026-08-12) ### ⚠ BREAKING CHANGES * **api:** HTTPX2 is now the default HTTP client, and `httpx` is n…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/openai/openai-python/releases/tag/v3.0.0" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -652,55 +910,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">deepseek-ai/deepseek-harness is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 76.00</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/deepseek-harness` 最近进入 GitHub 高活跃区间，属于用于扩展现有 AI 系统能力的插件或集成项目。DeepSeek Harness: Everything is a Plugin.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 150610，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：用于扩展现有 AI 系统能力的插件或集成项目；GitHub stars：150610；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>DeepSeek Harness: Everything is a Plugin.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">deepseek-ai/awesome-deepseek-agent is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.96</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/awesome-deepseek-agent` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。当前公开描述较少。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 5911，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：5911；信号来源：GitHub 发现流。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://github.com/deepseek-ai/awesome-deepseek-agent" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/deepseek-harness is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 76.00</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/deepseek-harness` 最近进入 GitHub 高活跃区间，属于用于扩展现有 AI 系统能力的插件或集成项目。DeepSeek Harness: Everything is a Plugin.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 150610，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>DeepSeek Harness: Everything is a Plugin.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：用于扩展现有 AI 系统能力的插件或集成项目；GitHub stars：150610；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">deepseek-ai/3FS is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.93</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">基础设施</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/awesome-deepseek-agent is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.96</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/awesome-deepseek-agent` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。当前公开描述较少。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 5911，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：5911；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/deepseek-ai/awesome-deepseek-agent" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/3FS` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。A high-performance distributed file system designed to address the challenges of AI training and inference workloads.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 10140，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：10140；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>A high-performance distributed file system designed to address the challenges of AI training and inference workloads.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/deepseek-ai/3FS" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">deepseek-ai/3FS is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.93</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`deepseek-ai/3FS` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。A high-performance distributed file system designed to address the challenges of AI training and inference workloads.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 10140，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>A high-performance distributed file system designed to address the challenges of AI training and inference workloads.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：10140；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/deepseek-ai/3FS" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -714,55 +999,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">InternLM/lmdeploy is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.99</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`InternLM/lmdeploy` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 8012，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：8012；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/InternLM/lmdeploy" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">InternLM/WildClawBench is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 73.18</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`InternLM/WildClawBench` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 513，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：513；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/InternLM/WildClawBench" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">InternLM/lmdeploy is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.99</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`InternLM/lmdeploy` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 8012，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>LMDeploy is a toolkit for compressing, deploying, and serving LLMs.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：8012；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/InternLM/lmdeploy" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">InternLM/xtuner is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 73.10</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">InternLM/WildClawBench is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 73.18</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`InternLM/WildClawBench` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 513，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度</p>
+          <p class="blurb"><span class="label">原文摘要：</span>An in-the-wild benchmark for AI agents in the OpenClaw Environment.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：513；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/InternLM/WildClawBench" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`InternLM/xtuner` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 5180，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：5180；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/InternLM/xtuner" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">InternLM/xtuner is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 73.10</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`InternLM/xtuner` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 5180，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度</p>
+          <p class="blurb"><span class="label">原文摘要：</span>A Next-Generation Training Engine Built for Ultra-Large MoE Models</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：5180；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/InternLM/xtuner" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -776,55 +1088,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">QwenLM/qwen-code is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.99</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span><span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`QwenLM/qwen-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An open-source AI coding agent that lives in your terminal.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 27127，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：27127；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>An open-source AI coding agent that lives in your terminal.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/QwenLM/qwen-code" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">QwenLM/Qwen-MM-Plugins is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.98</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span><span class="pill">多模态</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`QwenLM/Qwen-MM-Plugins` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Make any agent harness multimodal-native.</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2679，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2679；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Make any agent harness multimodal-native.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/QwenLM/Qwen-MM-Plugins" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">QwenLM/qwen-code is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.99</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span><span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`QwenLM/qwen-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An open-source AI coding agent that lives in your terminal.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 27127，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>An open-source AI coding agent that lives in your terminal.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：27127；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/QwenLM/qwen-code" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">QwenLM/Qwen-AgentWorld is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.96</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">QwenLM/Qwen-MM-Plugins is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.98</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span><span class="pill">多模态</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`QwenLM/Qwen-MM-Plugins` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Make any agent harness multimodal-native.</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2679，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Make any agent harness multimodal-native.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2679；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/QwenLM/Qwen-MM-Plugins" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`QwenLM/Qwen-AgentWorld` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Qwen-AgentWorld: Language World Models for General Agents</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 954，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：954；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Qwen-AgentWorld: Language World Models for General Agents</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/QwenLM/Qwen-AgentWorld" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">QwenLM/Qwen-AgentWorld is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.96</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`QwenLM/Qwen-AgentWorld` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Qwen-AgentWorld: Language World Models for General Agents</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 954，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Qwen-AgentWorld: Language World Models for General Agents</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：954；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/QwenLM/Qwen-AgentWorld" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -838,55 +1177,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">MoonshotAI/Kimi-K3 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.99</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/Kimi-K3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Open Frontier Intelligence</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 8493，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：8493；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Open Frontier Intelligence</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/MoonshotAI/Kimi-K3" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">MoonshotAI/kimi-code is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.95</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span><span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/kimi-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6856，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：6856；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/MoonshotAI/kimi-code" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MoonshotAI/Kimi-K3 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.99</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/Kimi-K3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Open Frontier Intelligence</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 8493，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Open Frontier Intelligence</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：8493；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MoonshotAI/Kimi-K3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">MoonshotAI/Kimi-K2.5 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.25</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MoonshotAI/kimi-code is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.95</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span><span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/kimi-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6856，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Kimi Code CLI — The Starting Point for Next-Gen Agents</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：6856；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MoonshotAI/kimi-code" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/Kimi-K2.5` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Open Visual Agentic Intelligence</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2300，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2300；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Open Visual Agentic Intelligence</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/MoonshotAI/Kimi-K2.5" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MoonshotAI/Kimi-K2.5 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.25</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MoonshotAI/Kimi-K2.5` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Open Visual Agentic Intelligence</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2300，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Open Visual Agentic Intelligence</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2300；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MoonshotAI/Kimi-K2.5" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -900,55 +1266,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">MiniMax-AI/MiniMax-H3 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.96</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MiniMax-H3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6153，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：6153；信号来源：GitHub 发现流。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">MiniMax-AI/MiniMax-Music3 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.94</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MiniMax-Music3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 525，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：525；信号来源：GitHub 发现流。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://github.com/MiniMax-AI/MiniMax-Music3" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMax-AI/MiniMax-H3 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.96</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MiniMax-H3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6153，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：6153；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MiniMax-AI/MiniMax-H3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">MiniMax-AI/MSA is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.56</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMax-AI/MiniMax-Music3 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.94</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MiniMax-Music3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 525，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：525；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MiniMax-AI/MiniMax-Music3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MSA` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：411；信号来源：GitHub 发现流。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://github.com/MiniMax-AI/MSA" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">MiniMax-AI/MSA is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.56</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`MiniMax-AI/MSA` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：411；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/MiniMax-AI/MSA" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -962,55 +1355,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Tencent-Hunyuan/UniRL is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.95</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">多模态</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/UniRL` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。UniRL is a Framework for Unified Multimodal Model Reinforcement Learning</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 903，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：903；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>UniRL is a Framework for Unified Multimodal Model Reinforcement Learning</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/Tencent-Hunyuan/UniRL" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">Tencent-Hunyuan/Hunyuan3D-WorldClaw is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.91</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/Hunyuan3D-WorldClaw` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 823，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：823；信号来源：GitHub 发现流。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://github.com/Tencent-Hunyuan/Hunyuan3D-WorldClaw" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Tencent-Hunyuan/UniRL is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.95</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">多模态</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/UniRL` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。UniRL is a Framework for Unified Multimodal Model Reinforcement Learning</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 903，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>UniRL is a Framework for Unified Multimodal Model Reinforcement Learning</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：903；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/Tencent-Hunyuan/UniRL" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">Tencent-Hunyuan/HY-World-2.0 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 74.75</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Tencent-Hunyuan/Hunyuan3D-WorldClaw is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.91</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/Hunyuan3D-WorldClaw` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 823，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：823；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/Tencent-Hunyuan/Hunyuan3D-WorldClaw" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/HY-World-2.0` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2527，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：2527；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/Tencent-Hunyuan/HY-World-2.0" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Tencent-Hunyuan/HY-World-2.0 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 74.75</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`Tencent-Hunyuan/HY-World-2.0` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 2527，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：2527；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/Tencent-Hunyuan/HY-World-2.0" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1024,19 +1444,28 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">ysr666/dsh-vision-router is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.95</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">Agent</span><span class="pill">图像</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`ysr666/dsh-vision-router` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, ground…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 638，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：638；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, scree…</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/ysr666/dsh-vision-router" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">ysr666/dsh-vision-router is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.95</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">Agent</span><span class="pill">图像</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`ysr666/dsh-vision-router` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, ground…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 638，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&amp;A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, scree…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：638；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/ysr666/dsh-vision-router" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1050,55 +1479,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">modelscope/evalscope is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.95</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`modelscope/evalscope` 最近进入 GitHub 高活跃区间，属于用于评测模型或 agent 能力的开源项目。A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmar…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 3251，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：用于评测模型或 agent 能力的开源项目；GitHub stars：3251；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/modelscope/evalscope" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">modelscope/FunASR is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.93</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">语音</span><span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`modelscope/FunASR` 最近进入 GitHub 高活跃区间，属于用于语音处理或语音识别的开源项目。Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pi…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 19895，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：用于语音处理或语音识别的开源项目；GitHub stars：19895；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, and OpenAI-compatible/MCP serving.</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/modelscope/FunASR" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">modelscope/evalscope is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.95</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`modelscope/evalscope` 最近进入 GitHub 高活跃区间，属于用于评测模型或 agent 能力的开源项目。A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmar…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 3251，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：用于评测模型或 agent 能力的开源项目；GitHub stars：3251；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/modelscope/evalscope" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">modelscope/ms-swift is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.89</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">modelscope/FunASR is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.93</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">语音</span><span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`modelscope/FunASR` 最近进入 GitHub 高活跃区间，属于用于语音处理或语音识别的开源项目。Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pi…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 19895，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctuation, speaker diarization pipelines, and OpenAI-compatible/MCP serving.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：用于语音处理或语音识别的开源项目；GitHub stars：19895；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/modelscope/FunASR" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`modelscope/ms-swift` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.6, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 30…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 15255，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：15255；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.6, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 300+ MLLMs (Qwen3-VL, Qwen3-Omni, InternVL3.5, Ovis2.5, GLM4.5…</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/modelscope/ms-swift" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">modelscope/ms-swift is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.89</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`modelscope/ms-swift` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.6, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 30…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 15255，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.6, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 300+ MLLMs (Qwen3-VL, Qwen3-Omni, InternVL3.5, Ovis2.5, GLM4.5…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：15255；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/modelscope/ms-swift" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1112,55 +1568,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">ByteDance-Seed/Depth-Anything-3 is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.88</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/Depth-Anything-3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Depth Anything 3</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6138，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：6138；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Depth Anything 3</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/ByteDance-Seed/Depth-Anything-3" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">ByteDance-Seed/Triton-distributed is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 75.45</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/Triton-distributed` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Distributed Compiler based on Triton for Parallel Systems</p>
-      <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 1517，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：1517；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Distributed Compiler based on Triton for Parallel Systems</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/ByteDance-Seed/Triton-distributed" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">ByteDance-Seed/Depth-Anything-3 is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.88</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/Depth-Anything-3` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Depth Anything 3</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 6138，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Depth Anything 3</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：6138；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/ByteDance-Seed/Depth-Anything-3" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">ByteDance-Seed/EdgeBench is trending</h4>
-      <div class="meta">
-        <span class="pill">开源项目发布</span>
-        <span class="pill">Score 74.81</span>
-        <span class="pill">GitHub 发现流</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">ByteDance-Seed/Triton-distributed is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 75.45</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/Triton-distributed` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Distributed Compiler based on Triton for Parallel Systems</p>
+          <p class="blurb"><span class="label">推荐理由：</span>当前 GitHub stars 约 1517，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Distributed Compiler based on Triton for Parallel Systems</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：1517；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/ByteDance-Seed/Triton-distributed" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/EdgeBench` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
-      <p class="blurb"><span class="label">推荐理由：</span>近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：426；信号来源：GitHub 发现流。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
-      <div class="actions">
-        <a class="link" href="https://github.com/ByteDance-Seed/EdgeBench" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">ByteDance-Seed/EdgeBench is trending</h4>
+          <div class="meta">
+            <span class="pill">开源项目发布</span>
+            <span class="pill">Score 74.81</span>
+            <span class="pill">GitHub 发现流</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>`ByteDance-Seed/EdgeBench` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
+          <p class="blurb"><span class="label">推荐理由：</span>近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>EdgeBench: Unveiling scaling laws of learning from real-world environments</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：426；信号来源：GitHub 发现流。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://github.com/ByteDance-Seed/EdgeBench" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1182,55 +1665,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">The Defender’s Window</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 67.66</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS；主题更偏 API / 服务能力。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>AI is reshaping cybersecurity for attackers and defenders alike. Learn how OpenAI is strengthening its defenses and what security teams can do now.</p>
-      <div class="actions">
-        <a class="link" href="https://openai.com/index/the-defenders-window" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">From assistance to execution: How enterprises put AI to work</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 51.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">Agent</span><span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是一篇官方实践或方法说明，核心是解释某个模型或能力在真实业务中的使用方式。</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS；主题更偏案例/采用情况。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.</p>
-      <div class="actions">
-        <a class="link" href="https://openai.com/index/how-enterprises-put-ai-to-work" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">The Defender’s Window</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 67.66</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是一项新的 API / 服务能力更新，重点在于更快、更便宜或更易接入的调用方式。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>AI is reshaping cybersecurity for attackers and defenders alike. Learn how OpenAI is strengthening its defenses and what security teams can do now.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS；主题更偏 API / 服务能力。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://openai.com/index/the-defenders-window" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">OpenAI joins PORTS-Pike project</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 39.58</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">From assistance to execution: How enterprises put AI to work</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 51.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">Agent</span><span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是一篇官方实践或方法说明，核心是解释某个模型或能力在真实业务中的使用方式。</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS；主题更偏案例/采用情况。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://openai.com/index/how-enterprises-put-ai-to-work" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：OpenAI joins PORTS-Pike project, expanding community investment and supporting thousands of Southern Ohio jobs</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>OpenAI joins PORTS-Pike project, expanding community investment and supporting thousands of Southern Ohio jobs</p>
-      <div class="actions">
-        <a class="link" href="https://openai.com/index/openai-joins-ports-pike-project" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">OpenAI joins PORTS-Pike project</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 39.58</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：OpenAI joins PORTS-Pike project, expanding community investment and supporting thousands of Southern Ohio jobs</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>OpenAI joins PORTS-Pike project, expanding community investment and supporting thousands of Southern Ohio jobs</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://openai.com/index/openai-joins-ports-pike-project" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1244,55 +1754,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Same Cluster, 33 Points More Utilization: What Changed Was the Order</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 42.04</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：Same Cluster, 33 Points More Utilization: What Changed Was the Order</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/blog/Dharma-AI/gpu-management-pt2" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">What We Learned by Reproducing 2,200 papers from ICML</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：What We Learned by Reproducing 2,200 papers from ICML</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/blog/icml-2026-open-reproductions" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Same Cluster, 33 Points More Utilization: What Changed Was the Order</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 42.04</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：Same Cluster, 33 Points More Utilization: What Changed Was the Order</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/blog/Dharma-AI/gpu-management-pt2" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">LFM2.5-VL-3B for Better and Faster Vision Capabilities for the Edge</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">What We Learned by Reproducing 2,200 papers from ICML</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：What We Learned by Reproducing 2,200 papers from ICML</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/blog/icml-2026-open-reproductions" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：LFM2.5-VL-3B for Better and Faster Vision Capabilities for the Edge</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      
-      <div class="actions">
-        <a class="link" href="https://huggingface.co/blog/LiquidAI/lfm2-5-vl-3b" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">LFM2.5-VL-3B for Better and Faster Vision Capabilities for the Edge</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：LFM2.5-VL-3B for Better and Faster Vision Capabilities for the Edge</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://huggingface.co/blog/LiquidAI/lfm2-5-vl-3b" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1306,55 +1843,82 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Securing the Infrastructure of Intelligence</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 40.84</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">基础设施</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：AI factories are the defining infrastructure of the AI era — where compute transforms energy and data into intelligence…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>AI factories are the defining infrastructure of the AI era — where compute transforms energy and data into intelligence that powers every business, industry and country. In the AI…</p>
-      <div class="actions">
-        <a class="link" href="https://blogs.nvidia.com/blog/securing-the-infrastructure-of-intelligence/" target="_blank" rel="noreferrer">查看原链接</a>
-      </div>
-    </div>
-    
-
-    <div class="event-item">
-      <h4 class="event-title">Class Is in Session: GeForce NOW Levels Up Linux, Chromebooks and More</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 24.91</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">未打标签</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：GeForce NOW is giving cloud gaming an extra-credit upgrade just in time for back-to-school season. The native Linux app…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>GeForce NOW is giving cloud gaming an extra-credit upgrade just in time for back-to-school season. The native Linux app for GeForce NOW is officially out of beta. GeForce NOW is a…</p>
-      <div class="actions">
-        <a class="link" href="https://blogs.nvidia.com/blog/geforce-now-thursday-linux-native-app/" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Securing the Infrastructure of Intelligence</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 40.84</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：AI factories are the defining infrastructure of the AI era — where compute transforms energy and data into intelligence…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态</p>
+          <p class="blurb"><span class="label">原文摘要：</span>AI factories are the defining infrastructure of the AI era — where compute transforms energy and data into intelligence that powers every business, industry and country. In the AI…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://blogs.nvidia.com/blog/securing-the-infrastructure-of-intelligence/" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">Why Scaling AI Compute Performance Requires a New Power Architecture</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">基础设施</span>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Class Is in Session: GeForce NOW Levels Up Linux, Chromebooks and More</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 24.91</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">未打标签</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：GeForce NOW is giving cloud gaming an extra-credit upgrade just in time for back-to-school season. The native Linux app…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>GeForce NOW is giving cloud gaming an extra-credit upgrade just in time for back-to-school season. The native Linux app for GeForce NOW is officially out of beta. GeForce NOW is a…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://blogs.nvidia.com/blog/geforce-now-thursday-linux-native-app/" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：Every new generation of accelerated computing demands more from the infrastructure underneath it — more compute perform…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>Every new generation of accelerated computing demands more from the infrastructure underneath it — more compute performance, higher rack density and more efficient, scalable power…</p>
-      <div class="actions">
-        <a class="link" href="https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/" target="_blank" rel="noreferrer">查看原链接</a>
+    </div>
+    
+
+    <div class="event-item">
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Why Scaling AI Compute Performance Requires a New Power Architecture</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">基础设施</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：Every new generation of accelerated computing demands more from the infrastructure underneath it — more compute perform…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>Every new generation of accelerated computing demands more from the infrastructure underneath it — more compute performance, higher rack density and more efficient, scalable power…</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1368,19 +1932,28 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">DeepSeek-V4 Flash 0731 vs GPT-5.6 Luna on DeepSWE: Cost and Coding</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 900 DeepSWE rollouts on DeepSeek-V4 Flash and GPT-5.6 Luna. Luna leads pass@1 by 14 points; DeepSeek delivers 4.…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>We ran 900 DeepSWE rollouts on DeepSeek-V4 Flash and GPT-5.6 Luna. Luna leads pass@1 by 14 points; DeepSeek delivers 4.8x the solves per dollar.</p>
-      <div class="actions">
-        <a class="link" href="https://www.together.ai/blog/deepseek-v4-flash-0731-vs-gpt-5-6-luna-on-deepswe-cost-and-coding" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">DeepSeek-V4 Flash 0731 vs GPT-5.6 Luna on DeepSWE: Cost and Coding</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 900 DeepSWE rollouts on DeepSeek-V4 Flash and GPT-5.6 Luna. Luna leads pass@1 by 14 points; DeepSeek delivers 4.…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>We ran 900 DeepSWE rollouts on DeepSeek-V4 Flash and GPT-5.6 Luna. Luna leads pass@1 by 14 points; DeepSeek delivers 4.8x the solves per dollar.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://www.together.ai/blog/deepseek-v4-flash-0731-vs-gpt-5-6-luna-on-deepswe-cost-and-coding" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
@@ -1394,37 +1967,55 @@
       </div>
       <div class="event-list">
     <div class="event-item">
-      <h4 class="event-title">Kimi K3 vs GPT-5.6 Sol on DeepSWE: Cost, Coding, and Routing</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 904 DeepSWE rollouts on Kimi K3 and GPT-5.6 Sol. Sol leads pass@1; Kimi K3 wins pass@4 at 2.8x the solves per do…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>We ran 904 DeepSWE rollouts on Kimi K3 and GPT-5.6 Sol. Sol leads pass@1; Kimi K3 wins pass@4 at 2.8x the solves per dollar, and routing between them reaches ~85.6%.</p>
-      <div class="actions">
-        <a class="link" href="https://www.together.ai/blog/kimi-k3-vs-gpt-5-6-sol-on-deepswe-cost-coding-and-routing" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Kimi K3 vs GPT-5.6 Sol on DeepSWE: Cost, Coding, and Routing</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 904 DeepSWE rollouts on Kimi K3 and GPT-5.6 Sol. Sol leads pass@1; Kimi K3 wins pass@4 at 2.8x the solves per do…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>We ran 904 DeepSWE rollouts on Kimi K3 and GPT-5.6 Sol. Sol leads pass@1; Kimi K3 wins pass@4 at 2.8x the solves per dollar, and routing between them reaches ~85.6%.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://www.together.ai/blog/kimi-k3-vs-gpt-5-6-sol-on-deepswe-cost-coding-and-routing" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     
 
     <div class="event-item">
-      <h4 class="event-title">Kimi K3 vs Claude Fable 5 on DeepSWE: Cost and Coding</h4>
-      <div class="meta">
-        <span class="pill">观察事项</span>
-        <span class="pill">Score 23.00</span>
-        <span class="pill">官方资讯源</span>
-        <span class="pill">编程</span>
-      </div>
-      <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 452 DeepSWE rollouts on Kimi K3 and Claude Fable 5. Fable leads pass@1 by 1.4 points; Kimi K3 wins pass@4 and de…</p>
-      <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
-      <p class="blurb"><span class="label">关键信号：</span>信号来源：官方 RSS。</p>
-      <p class="blurb"><span class="label">原文摘要：</span>We ran 452 DeepSWE rollouts on Kimi K3 and Claude Fable 5. Fable leads pass@1 by 1.4 points; Kimi K3 wins pass@4 and delivers 2.8x the solves per dollar.</p>
-      <div class="actions">
-        <a class="link" href="https://www.together.ai/blog/kimi-k3-vs-claude-fable-5-on-deepswe-cost-and-coding" target="_blank" rel="noreferrer">查看原链接</a>
+      <div class="event-shell">
+        <div class="event-main">
+          <h4 class="event-title">Kimi K3 vs Claude Fable 5 on DeepSWE: Cost and Coding</h4>
+          <div class="meta">
+            <span class="pill">观察事项</span>
+            <span class="pill">Score 23.00</span>
+            <span class="pill">官方资讯源</span>
+            <span class="pill">编程</span>
+          </div>
+          <p class="blurb"><span class="label">摘要：</span>这是官方发布源中的一条更新，核心内容是：We ran 452 DeepSWE rollouts on Kimi K3 and Claude Fable 5. Fable leads pass@1 by 1.4 points; Kimi K3 wins pass@4 and de…</p>
+          <p class="blurb"><span class="label">推荐理由：</span>来自官方发布面，可信度比二手转述更高</p>
+          <p class="blurb"><span class="label">原文摘要：</span>We ran 452 DeepSWE rollouts on Kimi K3 and Claude Fable 5. Fable leads pass@1 by 1.4 points; Kimi K3 wins pass@4 and delivers 2.8x the solves per dollar.</p>
+        </div>
+        <aside class="event-side">
+          <div class="signal-box">
+            <p class="signal-kicker">关键信号</p>
+            <p class="signal-text">信号来源：官方 RSS。</p>
+          </div>
+          <div class="actions">
+            <a class="link" href="https://www.together.ai/blog/kimi-k3-vs-claude-fable-5-on-deepswe-cost-and-coding" target="_blank" rel="noreferrer">查看原链接</a>
+          </div>
+        </aside>
       </div>
     </div>
     </div>
