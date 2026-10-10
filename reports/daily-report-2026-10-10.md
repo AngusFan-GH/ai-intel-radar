@@ -1,0 +1,459 @@
+# AI 情报雷达日报（2026-10-10）
+
+当前展示池累计 240 条事件。日报已改成按厂商合并展示，并补充“摘要 / 推荐理由 / 关键信号”，帮助快速判断什么值得继续点开。
+
+数据概况： 厂商新品 1 条； 新模型 124 条； 新开源项目 100 条； 其他观察 15 条。
+
+## 厂商新品（1）
+
+### Together AI（1 条重点）
+
+- [Introducing preemptible compute: the same compute, half the price](https://www.together.ai/blog/introducing-preemptible-compute-the-same-compute-half-the-price)
+  - 中文说明：主体：Together AI；事件类型：产品发布；来源：官方资讯源；评分：51.00；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Together GPU Clusters now supports preemptible compute: the same GPU capacity at a flat 50% of the on-demand rate, with…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：Together GPU Clusters now supports preemptible compute: the same GPU capacity at a flat 50% of the on-demand rate, with a five-minute drain window.
+
+## 新模型（124）
+
+### Qwen（3 条重点）
+
+- [Qwen/Qwen-Image-2.1-Turbo updated](https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo)
+  - 中文说明：主体：Qwen；事件类型：模型发布；来源：Hugging Face 模型流；评分：98.32；标签：base_model:Qwen/Qwen-Image-2.1、base_model:finetune:Qwen/Qwen-Image-2.1、diffusers、diffusers:QwenImage21Pipeline、图像、image-editing、image-generation、license:other、qwen、region:us、safetensors、text-to-image。
+  - 摘要：`Qwen/Qwen-Image-2.1-Turbo` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见点赞约 309。
+  - 推荐理由：社区点赞约 309；这是模型层面的直接更新信号，不是二手媒体转述；属于近 24 小时内的新鲜动态
+  - 关键信号：标签：diffusers / safetensors / qwen / image-generation / image-editing / text-to-image；点赞：309；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=diffusers, safetensors, qwen, image-generation, image-editing, text-to-image; downloads=0; likes=309
+
+- [Qwen/Qwen-Image-2.1 updated](https://huggingface.co/Qwen/Qwen-Image-2.1)
+  - 中文说明：主体：Qwen；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：diffusers、diffusers:QwenImage21Pipeline、图像、image-editing、image-generation、license:other、qwen、region:us、rgba、safetensors、text-to-image。
+  - 摘要：`Qwen/Qwen-Image-2.1` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 122311，点赞约 3160。
+  - 推荐理由：模型分发页显示下载量约 122311；社区点赞约 3160；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：diffusers / safetensors / qwen / image-generation / image-editing / rgba；下载量：122311；点赞：3160；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=diffusers, safetensors, qwen, image-generation, image-editing, rgba; downloads=122311; likes=3160
+
+- [Qwen/Qwen-Drive-1.0-4B updated](https://huggingface.co/Qwen/Qwen-Drive-1.0-4B)
+  - 中文说明：主体：Qwen；事件类型：模型发布；来源：Hugging Face 模型流；评分：77.05；标签：3d-perception、arxiv:2609.00111、autonomous-driving、base_model:Qwen/Qwen3.5-4B、base_model:finetune:Qwen/Qwen3.5-4B、conversational、endpoints_compatible、图像、image-text-to-text、license:apache-2.0、motion-planning、qwen、qwen_drive、region:us、safetensors、transformers、visual-question-answering。
+  - 摘要：`Qwen/Qwen-Drive-1.0-4B` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 5627，点赞约 241。
+  - 推荐理由：模型分发页显示下载量约 5627；社区点赞约 241；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / qwen_drive / autonomous-driving / motion-planning / 3d-perception；下载量：5627；点赞：241；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, qwen_drive, autonomous-driving, motion-planning, 3d-perception; downloads=5627; likes=241
+
+### DeepSeek（3 条重点）
+
+- [deepseek-ai/DeepSeek-V4.1-Flash updated](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
+  - 中文说明：主体：DeepSeek；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：8-bit、conversational、deepseek_v41、endpoints_compatible、eval-results、fp8、图像、image-text-to-text、license:mit、region:us、safetensors、text-generation、transformers。
+  - 摘要：`deepseek-ai/DeepSeek-V4.1-Flash` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1316468，点赞约 4299。
+  - 推荐理由：模型分发页显示下载量约 1316468；社区点赞约 4299；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / deepseek_v41 / text-generation / image-text-to-text / conversational；下载量：1316468；点赞：4299；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, deepseek_v41, text-generation, image-text-to-text, conversational; downloads=1316468; likes=4299
+
+- [deepseek-ai/DeepSeek-V4-Flash-Vision-Exp updated](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp)
+  - 中文说明：主体：DeepSeek；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：8-bit、deepseek_v4、endpoints_compatible、eval-results、fp8、图像、image-text-to-text、license:mit、region:us、safetensors、text-generation、transformers。
+  - 摘要：`deepseek-ai/DeepSeek-V4-Flash-Vision-Exp` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 716019，点赞约 934。
+  - 推荐理由：模型分发页显示下载量约 716019；社区点赞约 934；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / deepseek_v4 / text-generation / image-text-to-text / license:mit；下载量：716019；点赞：934；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, deepseek_v4, text-generation, image-text-to-text, license:mit; downloads=716019; likes=934
+
+- [deepseek-ai/DeepSeek-V4-Pro-0813 updated](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813)
+  - 中文说明：主体：DeepSeek；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：8-bit、arxiv:2606.19348、deepseek_v4、endpoints_compatible、eval-results、fp8、license:mit、region:us、safetensors、text-generation、transformers。
+  - 摘要：`deepseek-ai/DeepSeek-V4-Pro-0813` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 87554，点赞约 866。
+  - 推荐理由：模型分发页显示下载量约 87554；社区点赞约 866；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / deepseek_v4 / text-generation / arxiv:2606.19348 / license:mit；下载量：87554；点赞：866；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, deepseek_v4, text-generation, arxiv:2606.19348, license:mit; downloads=87554; likes=866
+
+### Zhipu AI（3 条重点）
+
+- [zai-org/GLM-OCR updated](https://huggingface.co/zai-org/GLM-OCR)
+  - 中文说明：主体：Zhipu AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：arxiv:2603.10910、conversational、de、deploy:azure、deploy:sagemaker、en、endpoints_compatible、es、eval-results、fr、glm_ocr、图像、image-text-to-text、image-to-text、ja、ko、license:mit、region:us、ru、safetensors、transformers、zh。
+  - 摘要：`zai-org/GLM-OCR` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1839494，点赞约 2136。
+  - 推荐理由：模型分发页显示下载量约 1839494；社区点赞约 2136；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / glm_ocr / image-text-to-text / conversational / image-to-text；下载量：1839494；点赞：2136；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, glm_ocr, image-text-to-text, conversational, image-to-text; downloads=1839494; likes=2136
+
+- [zai-org/GLM-5.3-Flash updated](https://huggingface.co/zai-org/GLM-5.3-Flash)
+  - 中文说明：主体：Zhipu AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：arxiv:2602.15763、conversational、deploy:azure、en、endpoints_compatible、eval-results、fp8、glm5_next、图像、image-text-to-text、license:mit、region:us、safetensors、transformers、zh。
+  - 摘要：`zai-org/GLM-5.3-Flash` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 6390969，点赞约 2777。
+  - 推荐理由：模型分发页显示下载量约 6390969；社区点赞约 2777；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / glm5_next / image-text-to-text / conversational / en；下载量：6390969；点赞：2777；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, glm5_next, image-text-to-text, conversational, en; downloads=6390969; likes=2777
+
+- [zai-org/GLM-5.3 updated](https://huggingface.co/zai-org/GLM-5.3)
+  - 中文说明：主体：Zhipu AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：arxiv:2602.15763、conversational、deploy:sagemaker、en、endpoints_compatible、eval-results、fp8、glm_moe_dsa、license:other、region:us、safetensors、text-generation、transformers、zh。
+  - 摘要：`zai-org/GLM-5.3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1648104，点赞约 2155。
+  - 推荐理由：模型分发页显示下载量约 1648104；社区点赞约 2155；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / glm_moe_dsa / text-generation / conversational / en；下载量：1648104；点赞：2155；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, glm_moe_dsa, text-generation, conversational, en; downloads=1648104; likes=2155
+
+### 月之暗面（3 条重点）
+
+- [moonshotai/Kimi-K3 updated](https://huggingface.co/moonshotai/Kimi-K3)
+  - 中文说明：主体：月之暗面；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：8-bit、编程、compressed-tensors、conversational、custom_code、deploy:sagemaker、eval-results、feature-extraction、图像、image-text-to-text、kimi_k3、license:other、region:us、safetensors、transformers。
+  - 摘要：`moonshotai/Kimi-K3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 1181053，点赞约 11646。
+  - 推荐理由：模型分发页显示下载量约 1181053；社区点赞约 11646；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / kimi_k3 / feature-extraction / compressed-tensors / conversational；下载量：1181053；点赞：11646；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, kimi_k3, feature-extraction, compressed-tensors, conversational; downloads=1181053; likes=11646
+
+- [moonshotai/Kimi-K2.7-Code updated](https://huggingface.co/moonshotai/Kimi-K2.7-Code)
+  - 中文说明：主体：月之暗面；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：编程、compressed-tensors、conversational、custom_code、eval-results、feature-extraction、图像、image-text-to-text、kimi_k25、license:other、region:us、safetensors、transformers。
+  - 摘要：`moonshotai/Kimi-K2.7-Code` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 113313，点赞约 1412。
+  - 推荐理由：模型分发页显示下载量约 113313；社区点赞约 1412；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：113313；点赞：1412；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=113313; likes=1412
+
+- [moonshotai/Kimi-K2.6 updated](https://huggingface.co/moonshotai/Kimi-K2.6)
+  - 中文说明：主体：月之暗面；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：arxiv:2602.02276、编程、compressed-tensors、conversational、custom_code、eval-results、feature-extraction、图像、image-text-to-text、kimi_k25、license:other、region:us、safetensors、transformers。
+  - 摘要：`moonshotai/Kimi-K2.6` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 436006，点赞约 1613。
+  - 推荐理由：模型分发页显示下载量约 436006；社区点赞约 1613；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / kimi_k25 / feature-extraction / compressed-tensors / image-text-to-text；下载量：436006；点赞：1613；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, kimi_k25, feature-extraction, compressed-tensors, image-text-to-text; downloads=436006; likes=1613
+
+### MiniMax（3 条重点）
+
+- [MiniMaxAI/MiniMax-Music3 updated](https://huggingface.co/MiniMaxAI/MiniMax-Music3)
+  - 中文说明：主体：MiniMax；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：diffusers、minimax_music3、music-generation、pytorch、region:us、safetensors、sglang-omni、text-to-audio、text-to-music、语音。
+  - 摘要：`MiniMaxAI/MiniMax-Music3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 7035，点赞约 1434。
+  - 推荐理由：模型分发页显示下载量约 7035；社区点赞约 1434；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：diffusers / safetensors / minimax_music3 / music-generation / text-to-music / pytorch；下载量：7035；点赞：1434；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=diffusers, safetensors, minimax_music3, music-generation, text-to-music, pytorch; downloads=7035; likes=1434
+
+- [MiniMaxAI/MiniMax-H3 updated](https://huggingface.co/MiniMaxAI/MiniMax-H3)
+  - 中文说明：主体：MiniMax；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：audio-to-audio-video、audio-video-generation、diffusers、图像、image-text-to-audio-video、image-text-to-video、image-to-audio-video、image-to-video、license:other、minimax-h3、多模态、reference-to-audio-video、region:us、safetensors、synchronized-audio-video、text-to-audio-video、text-to-video、视频、video-to-audio-video、video-to-video、语音。
+  - 摘要：`MiniMaxAI/MiniMax-H3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 3529811，点赞约 6006。
+  - 推荐理由：模型分发页显示下载量约 3529811；社区点赞约 6006；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：minimax-h3 / diffusers / safetensors / text-to-video / image-to-video / image-text-to-video；下载量：3529811；点赞：6006；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=minimax-h3, diffusers, safetensors, text-to-video, image-to-video, image-text-to-video; downloads=3529811; likes=6006
+
+- [MiniMaxAI/MiniMax-M3 updated](https://huggingface.co/MiniMaxAI/MiniMax-M3)
+  - 中文说明：主体：MiniMax；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：Agent、arxiv:2606.13392、编程、conversational、custom_code、endpoints_compatible、eval-results、图像、image-text-to-text、license:other、minimax_m3_vl、moe、多模态、region:us、safetensors、transformers、视频。
+  - 摘要：`MiniMaxAI/MiniMax-M3` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 204204，点赞约 1568。
+  - 推荐理由：模型分发页显示下载量约 204204；社区点赞约 1568；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：transformers / safetensors / minimax_m3_vl / image-text-to-text / multimodal / moe；下载量：204204；点赞：1568；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=transformers, safetensors, minimax_m3_vl, image-text-to-text, multimodal, moe; downloads=204204; likes=1568
+
+### Mistral AI（3 条重点）
+
+- [mistralai/Mistral-Small-4-119B-2603 updated](https://huggingface.co/mistralai/Mistral-Small-4-119B-2603)
+  - 中文说明：主体：Mistral AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：85.00；标签：ar、bn、de、deploy:azure、en、es、eval-results、fa、fp8、fr、hi、id、it、ja、ko、license:apache-2.0、mistral3、ms、ne、pl、pt、region:us、ro、ru、safetensors、sr、sv、tr、uk、vLLM、vi、zh。
+  - 摘要：`mistralai/Mistral-Small-4-119B-2603` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见下载量约 79656，点赞约 440。
+  - 推荐理由：模型分发页显示下载量约 79656；社区点赞约 440；这是模型层面的直接更新信号，不是二手媒体转述
+  - 关键信号：标签：safetensors / mistral3 / vLLM / en / fr / de；下载量：79656；点赞：440；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=safetensors, mistral3, vLLM, en, fr, de; downloads=79656; likes=440
+
+- [mistralai/Voxtral-Mini-4B-Realtime-Arabic updated](https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-Arabic)
+  - 中文说明：主体：Mistral AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：83.66；标签：acm、acx、aeb、afb、ajp、apc、apd、ar、arq、ars、ary、arz、audio、automatic-speech-recognition、ayl、ayn、base_model:finetune:mistralai/Voxtral-Mini-4B-Realtime-2602、base_model:mistralai/Voxtral-Mini-4B-Realtime-2602、mey、mistral-common、realtime、region:us、safetensors、shu、speech-to-text、vllm、语音、voxtral_realtime。
+  - 摘要：`mistralai/Voxtral-Mini-4B-Realtime-Arabic` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见点赞约 6。
+  - 推荐理由：社区点赞约 6；这是模型层面的直接更新信号，不是二手媒体转述；属于近 24 小时内的新鲜动态
+  - 关键信号：标签：vllm / safetensors / voxtral_realtime / mistral-common / audio / speech-to-text；点赞：6；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=vllm, safetensors, voxtral_realtime, mistral-common, audio, speech-to-text; downloads=0; likes=6
+
+- [mistralai/LIDstral-Arabic updated](https://huggingface.co/mistralai/LIDstral-Arabic)
+  - 中文说明：主体：Mistral AI；事件类型：模型发布；来源：Hugging Face 模型流；评分：83.61；标签：aa、ace、acm、acx、aeb、afb、ajp、apc、apd、ar、arq、ars、ary、arz、ayl、ayn、az、brh、ckb、dialect-identification、din、fa、fasttext、ff、glk、ha、hac、kk、kr、ks、ky、language-identification、license:apache-2.0、mey、ms、nqo、om、pnb、ps、region:us、sd、shu、sw、text-classification、tg、ti、tr、tzm、ur、uz、wo、zgh。
+  - 摘要：`mistralai/LIDstral-Arabic` 的 Hugging Face 模型页最近发生了更新，通常对应新权重、量化版本、模型卡或可用性变化。 当前可见点赞约 5。
+  - 推荐理由：社区点赞约 5；这是模型层面的直接更新信号，不是二手媒体转述；属于近 24 小时内的新鲜动态
+  - 关键信号：标签：fasttext / language-identification / dialect-identification / text-classification / ar / ary；点赞：5；信号来源：Hugging Face 模型页
+  - 原文摘要：tags=fasttext, language-identification, dialect-identification, text-classification, ar, ary; downloads=0; likes=5
+
+## 新开源项目（100）
+
+### OpenAI（3 条重点）
+
+- [openai/openai-python: v3.28.0](https://github.com/openai/openai-python/releases/tag/v3.28.0)
+  - 中文说明：主体：OpenAI；事件类型：开源项目发布；来源：GitHub Release；评分：79.96；标签：Agent、编程、基础设施。
+  - 摘要：`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。
+  - 推荐理由：release 代表项目维护者已经给出明确版本边界，信号强于普通提交；属于近 24 小时内的新鲜动态
+  - 关键信号：信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。
+  - 原文摘要：## [3.28.0](https://github.com/openai/openai-python/compare/v3.27.0...v3.28.0) (2026-10-09) ### Features * **api:** add agent environment suspension and expiration ([#4046](https:…
+
+- [openai/openai-python: v3.27.0](https://github.com/openai/openai-python/releases/tag/v3.27.0)
+  - 中文说明：主体：OpenAI；事件类型：开源项目发布；来源：GitHub Release；评分：78.79；标签：基础设施。
+  - 摘要：`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。
+  - 推荐理由：release 代表项目维护者已经给出明确版本边界，信号强于普通提交；属于近 24 小时内的新鲜动态
+  - 关键信号：信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。
+  - 原文摘要：## [3.27.0](https://github.com/openai/openai-python/compare/v3.26.1...v3.27.0) (2026-10-09) ### Features * **api:** add prewarmed hosted environments ([#4043](https://github.com/o…
+
+- [openai/openai-python: v3.26.1](https://github.com/openai/openai-python/releases/tag/v3.26.1)
+  - 中文说明：主体：OpenAI；事件类型：开源项目发布；来源：GitHub Release；评分：73.97；标签：语音、基础设施。
+  - 摘要：`openai/openai-python` 刚发布了一个新版本，说明这个 SDK 或开源项目最近有明确的版本更新。
+  - 推荐理由：release 代表项目维护者已经给出明确版本边界，信号强于普通提交
+  - 关键信号：信号来源：GitHub Release；适合优先查看 release notes、破坏性变更和版本号。
+  - 原文摘要：## [3.26.1](https://github.com/openai/openai-python/compare/v3.26.0...v3.26.1) (2026-10-08) ### Bug Fixes * **api:** correct custom voice creation parameters ([#4038](https://gith…
+
+### DeepSeek（3 条重点）
+
+- [deepseek-ai/deepseek-harness is trending](https://github.com/deepseek-ai/deepseek-harness)
+  - 中文说明：主体：DeepSeek；事件类型：开源项目发布；来源：GitHub 发现流；评分：76.00；标签：未打标签。
+  - 摘要：`deepseek-ai/deepseek-harness` 最近进入 GitHub 高活跃区间，属于用于扩展现有 AI 系统能力的插件或集成项目。DeepSeek Harness: Everything is a Plugin.
+  - 推荐理由：当前 GitHub stars 约 246441，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：用于扩展现有 AI 系统能力的插件或集成项目；GitHub stars：246441；信号来源：GitHub 发现流。
+  - 原文摘要：DeepSeek Harness: Everything is a Plugin.
+
+- [deepseek-ai/DeepGEMM is trending](https://github.com/deepseek-ai/DeepGEMM)
+  - 中文说明：主体：DeepSeek；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。
+  - 摘要：`deepseek-ai/DeepGEMM` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。DeepGEMM: clean and efficient BLAS kernel library on GPU
+  - 推荐理由：当前 GitHub stars 约 8901，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：8901；信号来源：GitHub 发现流。
+  - 原文摘要：DeepGEMM: clean and efficient BLAS kernel library on GPU
+
+- [deepseek-ai/FlashMLA is trending](https://github.com/deepseek-ai/FlashMLA)
+  - 中文说明：主体：DeepSeek；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：未打标签。
+  - 摘要：`deepseek-ai/FlashMLA` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。FlashMLA: Efficient Multi-head Latent Attention Kernels
+  - 推荐理由：当前 GitHub stars 约 13057，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：13057；信号来源：GitHub 发现流。
+  - 原文摘要：FlashMLA: Efficient Multi-head Latent Attention Kernels
+
+### MiniMax（3 条重点）
+
+- [MiniMax-AI/minimax-code is trending](https://github.com/MiniMax-AI/minimax-code)
+  - 中文说明：主体：MiniMax；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.99；标签：Agent、编程。
+  - 摘要：`MiniMax-AI/minimax-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An open-source coding agent for your terminal, powered by MiniMax.
+  - 推荐理由：当前 GitHub stars 约 2005，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2005；信号来源：GitHub 发现流。
+  - 原文摘要：An open-source coding agent for your terminal, powered by MiniMax.
+
+- [MiniMax-AI/cli is trending](https://github.com/MiniMax-AI/cli)
+  - 中文说明：主体：MiniMax；事件类型：开源项目发布；来源：GitHub 发现流；评分：73.33；标签：图像、视频、语音。
+  - 摘要：`MiniMax-AI/cli` 最近进入 GitHub 高活跃区间，属于用于语音处理或语音识别的开源项目。Generate text, images, video, speech, and music by MiniMax.
+  - 推荐理由：当前 GitHub stars 约 2183，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：用于语音处理或语音识别的开源项目；GitHub stars：2183；信号来源：GitHub 发现流。
+  - 原文摘要：Generate text, images, video, speech, and music by MiniMax.
+
+- [MiniMax-AI/MSA is trending](https://github.com/MiniMax-AI/MSA)
+  - 中文说明：主体：MiniMax；事件类型：开源项目发布；来源：GitHub 发现流；评分：68.04；标签：未打标签。
+  - 摘要：`MiniMax-AI/MSA` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。
+  - 推荐理由：近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：429；信号来源：GitHub 发现流。
+
+### StepFun（3 条重点）
+
+- [stepfun-ai/Step-Code is trending](https://github.com/stepfun-ai/Step-Code)
+  - 中文说明：主体：StepFun；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.97；标签：编程。
+  - 摘要：`stepfun-ai/Step-Code` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。当前公开描述较少。
+  - 推荐理由：当前 GitHub stars 约 763，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：763；信号来源：GitHub 发现流。
+
+- [stepfun-ai/Step1X-Edit is trending](https://github.com/stepfun-ai/Step1X-Edit)
+  - 中文说明：主体：StepFun；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.17；标签：图像。
+  - 摘要：`stepfun-ai/Step1X-Edit` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。A SOTA open-source image editing model, which aims to provide comparable performance against the closed-source models l…
+  - 推荐理由：当前 GitHub stars 约 2268，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：2268；信号来源：GitHub 发现流。
+  - 原文摘要：A SOTA open-source image editing model, which aims to provide comparable performance against the closed-source models like GPT-4o and Gemini 2 Flash.
+
+- [stepfun-ai/SteptronOss is trending](https://github.com/stepfun-ai/SteptronOss)
+  - 中文说明：主体：StepFun；事件类型：开源项目发布；来源：GitHub 发现流；评分：73.59；标签：未打标签。
+  - 摘要：`stepfun-ai/SteptronOss` 最近进入 GitHub 高活跃区间，属于用于评测模型或 agent 能力的开源项目。A lightweight, AI-native training framework for large language models. Designed for fast iteration, reproducible experi…
+  - 推荐理由：当前 GitHub stars 约 588，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：用于评测模型或 agent 能力的开源项目；GitHub stars：588；信号来源：GitHub 发现流。
+  - 原文摘要：A lightweight, AI-native training framework for large language models. Designed for fast iteration, reproducible experiments, and modular configuration across SFT, RLVR, and evalu…
+
+### 月之暗面（3 条重点）
+
+- [MoonshotAI/MoonEP is trending](https://github.com/MoonshotAI/MoonEP)
+  - 中文说明：主体：月之暗面；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：未打标签。
+  - 摘要：`MoonshotAI/MoonEP` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。MoonEP: A Perfectly Balanced Expert Parallelism Library via Dynamic Redundant Experts
+  - 推荐理由：当前 GitHub stars 约 1165，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：1165；信号来源：GitHub 发现流。
+  - 原文摘要：MoonEP: A Perfectly Balanced Expert Parallelism Library via Dynamic Redundant Experts
+
+- [MoonshotAI/kimi-code is trending](https://github.com/MoonshotAI/kimi-code)
+  - 中文说明：主体：月之暗面；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.91；标签：Agent、编程。
+  - 摘要：`MoonshotAI/kimi-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Kimi Code CLI — The Starting Point for Next-Gen Agents
+  - 推荐理由：当前 GitHub stars 约 7813，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：7813；信号来源：GitHub 发现流。
+  - 原文摘要：Kimi Code CLI — The Starting Point for Next-Gen Agents
+
+- [MoonshotAI/kimi-cli is trending](https://github.com/MoonshotAI/kimi-cli)
+  - 中文说明：主体：月之暗面；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.72；标签：编程。
+  - 摘要：`MoonshotAI/kimi-cli` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。[Archived] Legacy Python Kimi CLI, no longer maintained. Please use Kimi Code CLI: https://github.com/MoonshotAI/kimi-c…
+  - 推荐理由：当前 GitHub stars 约 11424，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：11424；信号来源：GitHub 发现流。
+  - 原文摘要：[Archived] Legacy Python Kimi CLI, no longer maintained. Please use Kimi Code CLI: https://github.com/MoonshotAI/kimi-code
+
+### Qwen（3 条重点）
+
+- [QwenLM/Qwen-Image-2.1 is trending](https://github.com/QwenLM/Qwen-Image-2.1)
+  - 中文说明：主体：Qwen；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：图像。
+  - 摘要：`QwenLM/Qwen-Image-2.1` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Qwen's most powerful open-source image generation model
+  - 推荐理由：当前 GitHub stars 约 1812，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：1812；信号来源：GitHub 发现流。
+  - 原文摘要：Qwen's most powerful open-source image generation model
+
+- [QwenLM/qwen-code is trending](https://github.com/QwenLM/qwen-code)
+  - 中文说明：主体：Qwen；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.94；标签：Agent、编程。
+  - 摘要：`QwenLM/qwen-code` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。An open-source AI coding agent that lives in your terminal.
+  - 推荐理由：当前 GitHub stars 约 28387，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：28387；信号来源：GitHub 发现流。
+  - 原文摘要：An open-source AI coding agent that lives in your terminal.
+
+- [QwenLM/Qwen-MM-Plugins is trending](https://github.com/QwenLM/Qwen-MM-Plugins)
+  - 中文说明：主体：Qwen；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.89；标签：Agent、多模态。
+  - 摘要：`QwenLM/Qwen-MM-Plugins` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。Make any agent harness multimodal-native.
+  - 推荐理由：当前 GitHub stars 约 3125，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：3125；信号来源：GitHub 发现流。
+  - 原文摘要：Make any agent harness multimodal-native.
+
+### ModelScope（3 条重点）
+
+- [modelscope/ms-swift is trending](https://github.com/modelscope/ms-swift)
+  - 中文说明：主体：ModelScope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：未打标签。
+  - 摘要：`modelscope/ms-swift` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.8, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 30…
+  - 推荐理由：当前 GitHub stars 约 15805，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：15805；信号来源：GitHub 发现流。
+  - 原文摘要：Use PEFT or Full-parameter to CPT/SFT/DPO/GRPO 600+ LLMs (Qwen3.8, DeepSeek-V4, GLM-5.1, InternLM3, Llama4, ...) and 300+ MLLMs (Qwen3-VL, Qwen3-Omni, InternVL3.5, Ovis2.5, GLM5.3…
+
+- [modelscope/DiffSynth-Studio is trending](https://github.com/modelscope/DiffSynth-Studio)
+  - 中文说明：主体：ModelScope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.83；标签：图像。
+  - 摘要：`modelscope/DiffSynth-Studio` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Enjoy the magic of Diffusion models!
+  - 推荐理由：当前 GitHub stars 约 13214，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：13214；信号来源：GitHub 发现流。
+  - 原文摘要：Enjoy the magic of Diffusion models!
+
+- [modelscope/evalscope is trending](https://github.com/modelscope/evalscope)
+  - 中文说明：主体：ModelScope；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.75；标签：未打标签。
+  - 摘要：`modelscope/evalscope` 最近进入 GitHub 高活跃区间，属于用于评测模型或 agent 能力的开源项目。A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmar…
+  - 推荐理由：当前 GitHub stars 约 3514，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：用于评测模型或 agent 能力的开源项目；GitHub stars：3514；信号来源：GitHub 发现流。
+  - 原文摘要：A streamlined and customizable framework for efficient large model (LLM, VLM, AIGC) evaluation and performance benchmarking.
+
+### Tencent Hunyuan（3 条重点）
+
+- [Tencent-Hunyuan/AuK is trending](https://github.com/Tencent-Hunyuan/AuK)
+  - 中文说明：主体：Tencent Hunyuan；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.96；标签：语音。
+  - 摘要：`Tencent-Hunyuan/AuK` 最近进入 GitHub 高活跃区间，属于用于语音处理或语音识别的开源项目。AuK: An Open-Source Foundational Model for Speech Generation and Editing
+  - 推荐理由：当前 GitHub stars 约 1479，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：用于语音处理或语音识别的开源项目；GitHub stars：1479；信号来源：GitHub 发现流。
+  - 原文摘要：AuK: An Open-Source Foundational Model for Speech Generation and Editing
+
+- [Tencent-Hunyuan/UniRL is trending](https://github.com/Tencent-Hunyuan/UniRL)
+  - 中文说明：主体：Tencent Hunyuan；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.84；标签：多模态。
+  - 摘要：`Tencent-Hunyuan/UniRL` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。UniRL is a Framework for Unified Multimodal Model Reinforcement Learning
+  - 推荐理由：当前 GitHub stars 约 1009，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：1009；信号来源：GitHub 发现流。
+  - 原文摘要：UniRL is a Framework for Unified Multimodal Model Reinforcement Learning
+
+- [Tencent-Hunyuan/HunyuanVideo is trending](https://github.com/Tencent-Hunyuan/HunyuanVideo)
+  - 中文说明：主体：Tencent Hunyuan；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.58；标签：视频。
+  - 摘要：`Tencent-Hunyuan/HunyuanVideo` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。HunyuanVideo: A Systematic Framework For Large Video Generation Model
+  - 推荐理由：当前 GitHub stars 约 12609，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：12609；信号来源：GitHub 发现流。
+  - 原文摘要：HunyuanVideo: A Systematic Framework For Large Video Generation Model
+
+### ByteDance Seed（3 条重点）
+
+- [ByteDance-Seed/VeOmni is trending](https://github.com/ByteDance-Seed/VeOmni)
+  - 中文说明：主体：ByteDance Seed；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.95；标签：未打标签。
+  - 摘要：`ByteDance-Seed/VeOmni` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。VeOmni: Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo
+  - 推荐理由：当前 GitHub stars 约 2235，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：2235；信号来源：GitHub 发现流。
+  - 原文摘要：VeOmni: Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo
+
+- [ByteDance-Seed/EdgeBench is trending](https://github.com/ByteDance-Seed/EdgeBench)
+  - 中文说明：主体：ByteDance Seed；事件类型：开源项目发布；来源：GitHub 发现流；评分：72.96；标签：未打标签。
+  - 摘要：`ByteDance-Seed/EdgeBench` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。EdgeBench: Unveiling scaling laws of learning from real-world environments
+  - 推荐理由：近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：465；信号来源：GitHub 发现流。
+  - 原文摘要：EdgeBench: Unveiling scaling laws of learning from real-world environments
+
+- [ByteDance-Seed/Triton-distributed is trending](https://github.com/ByteDance-Seed/Triton-distributed)
+  - 中文说明：主体：ByteDance Seed；事件类型：开源项目发布；来源：GitHub 发现流；评分：72.78；标签：未打标签。
+  - 摘要：`ByteDance-Seed/Triton-distributed` 最近进入 GitHub 高活跃区间，属于面向 AI 应用或基础设施的开源项目。Distributed Compiler and Optimized Parallel Kernels
+  - 推荐理由：当前 GitHub stars 约 1560，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI 应用或基础设施的开源项目；GitHub stars：1560；信号来源：GitHub 发现流。
+  - 原文摘要：Distributed Compiler and Optimized Parallel Kernels
+
+### InternLM（3 条重点）
+
+- [InternLM/Intern-Decision is trending](https://github.com/InternLM/Intern-Decision)
+  - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：75.72；标签：未打标签。
+  - 摘要：`InternLM/Intern-Decision` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。Fast multi-modal decision model
+  - 推荐理由：当前 GitHub stars 约 691，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：691；信号来源：GitHub 发现流。
+  - 原文摘要：Fast multi-modal decision model
+
+- [InternLM/lagent is trending](https://github.com/InternLM/lagent)
+  - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：73.56；标签：Agent。
+  - 摘要：`InternLM/lagent` 最近进入 GitHub 高活跃区间，属于面向 AI agent 或编码助手的开源项目。A lightweight framework for building LLM-based agents
+  - 推荐理由：当前 GitHub stars 约 2282，说明已经形成一定关注度；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：面向 AI agent 或编码助手的开源项目；GitHub stars：2282；信号来源：GitHub 发现流。
+  - 原文摘要：A lightweight framework for building LLM-based agents
+
+- [InternLM/lmdeploy is trending](https://github.com/InternLM/lmdeploy)
+  - 中文说明：主体：InternLM；事件类型：开源项目发布；来源：GitHub 发现流；评分：72.22；标签：未打标签。
+  - 摘要：`InternLM/lmdeploy` 最近进入 GitHub 高活跃区间，属于围绕模型权重、模型推理或模型家族的开源项目。LMDeploy is a toolkit for compressing, deploying, and serving LLMs.
+  - 推荐理由：当前 GitHub stars 约 8102，已不是早期小项目；近期在 GitHub 发现流里活跃，适合判断开源生态的真实热度；属于近 24 小时内的新鲜动态
+  - 关键信号：开源类型：围绕模型权重、模型推理或模型家族的开源项目；GitHub stars：8102；信号来源：GitHub 发现流。
+  - 原文摘要：LMDeploy is a toolkit for compressing, deploying, and serving LLMs.
+
+## 其他观察（15）
+
+### Together AI（1 条重点）
+
+- [How to train your own Jev for $17](https://www.together.ai/blog/how-to-train-your-own-jev)
+  - 中文说明：主体：Together AI；事件类型：观察事项；来源：官方资讯源；评分：51.00；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：We just launched our own Jev-like classifier, together/Tev1-4B-experimental, on top of Qwen3.5 4B on Together’s serverl…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：We just launched our own Jev-like classifier, together/Tev1-4B-experimental, on top of Qwen3.5 4B on Together’s serverless platform. In this blog post we’ll show you how to fine-t…
+
+### Tencent Hunyuan（1 条重点）
+
+- [All news](https://www.tencent.com/newsroom/all-news/?type=media)
+  - 中文说明：主体：Tencent Hunyuan；事件类型：观察事项；来源：官方网页抓取；评分：46.00；标签：未打标签。
+  - 摘要：See how teamwork, leadership and global reach bring Tencent's vision and values to life.
+  - 推荐理由：来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态
+  - 关键信号：信号来源：厂商官网页面；动态类型：官网动态。
+  - 原文摘要：See how teamwork, leadership and global reach bring Tencent's vision and values to life.
+
+### Hugging Face（2 条重点）
+
+- [Impactful scheduling for GPU clusters](https://huggingface.co/blog/allenai/impactful-scheduling)
+  - 中文说明：主体：Hugging Face；事件类型：观察事项；来源：官方资讯源；评分：41.05；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Impactful scheduling for GPU clusters
+  - 推荐理由：来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态
+  - 关键信号：信号来源：官方 RSS。
+
+- [Open TTS Leaderboard: Scalable Evaluation for Multilingual Text-to-Speech and Voice Cloning](https://huggingface.co/blog/open-tts-leaderboard)
+  - 中文说明：主体：Hugging Face；事件类型：观察事项；来源：官方资讯源；评分：23.00；标签：语音。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Open TTS Leaderboard: Scalable Evaluation for Multilingual Text-to-Speech and Voice Cloning
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+
+### OpenAI（3 条重点）
+
+- [Sophos cuts threat investigation time by 96% with OpenAI Daybreak](https://openai.com/index/sophos)
+  - 中文说明：主体：OpenAI；事件类型：观察事项；来源：官方资讯源；评分：39.66；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高；属于近 24 小时内的新鲜动态
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.
+
+- [How Oracle turns days of work into minutes with ChatGPT and Codex](https://openai.com/index/oracle)
+  - 中文说明：主体：OpenAI；事件类型：观察事项；来源：官方资讯源；评分：37.16；标签：编程。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.
+
+- [Pollo AI turns creative ideas into campaigns with OpenAI](https://openai.com/index/pollo-ai)
+  - 中文说明：主体：OpenAI；事件类型：观察事项；来源：官方资讯源；评分：36.49；标签：图像、视频。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinemati…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.
+
+### NVIDIA AI（2 条重点）
+
+- [From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps](https://blogs.nvidia.com/blog/ai-breast-cancer-startups/)
+  - 中文说明：主体：NVIDIA AI；事件类型：观察事项；来源：官方资讯源；评分：24.66；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Breast cancer is the most commonly diagnosed cancer among American women — yet the gaps in care are wide. A majority of…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：Breast cancer is the most commonly diagnosed cancer among American women — yet the gaps in care are wide. A majority of women over age 40 skip the recommended annual screening. Ra…
+
+- [Fall Into 25 New Games on GeForce NOW This October](https://blogs.nvidia.com/blog/geforce-now-thursday-october-2026-games-list/)
+  - 中文说明：主体：NVIDIA AI；事件类型：观察事项；来源：官方资讯源；评分：23.00；标签：未打标签。
+  - 摘要：这是官方发布源中的一条更新，核心内容是：Spooky season is streaming in. Alongside falling leaves, pumpkin spice and everything nice, 25 new games are joining Ge…
+  - 推荐理由：来自官方发布面，可信度比二手转述更高
+  - 关键信号：信号来源：官方 RSS。
+  - 原文摘要：Spooky season is streaming in. Alongside falling leaves, pumpkin spice and everything nice, 25 new games are joining GeForce NOW throughout October, including six ready to play th…
